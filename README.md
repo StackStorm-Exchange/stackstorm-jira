@@ -65,7 +65,7 @@ This documentation is written as of 06/17/2014. JIRA 6.3 implements OAuth1. Most
      * Click Edit, hit IncomingAuthentication. Plug in the consumer key and RSA public key you generated.
 4. Get access token using this [script](https://github.com/lakshmi-kannan/jira-oauth-access-token-generator/blob/master/generate_access_token.py). You may need to install additional libraries to run that script, and you
   will need to edit the script to use your file locations. Check the [README](https://github.com/lakshmi-kannan/jira-oauth-access-token-generator/blob/master/README.md) file for more information.
-  The access token is printeed at the end of running that script. Save these keys somewhere safe. 
+  The access token is printed at the end of running that script. Save these keys somewhere safe. 
 5. Plug in the access token and access secret into the sensor or action. You are good to make JIRA calls. Note: OAuth token expires. You'll have to repeat the process based on the expiry date. 
 
 ## Sensors
