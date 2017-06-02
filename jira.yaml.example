@@ -6,3 +6,4 @@
   consumer_key: ""
   poll_interval: 30
   project: "MY_PROJECT"
+  verify: True

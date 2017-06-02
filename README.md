@@ -22,6 +22,7 @@ to `/opt/stackstorm/configs/jira.yaml` and edit as required.
 * ``poll_interval`` - Polling interval - default 30s
 * ``project`` - Key of the project which will be used as a default with some of the actions which
   don't require or allow you to specify a project (e.g. ``STORM``).
+* ``verify`` - Verify SSL certificates. Default True. Set to False to disable verification
 
 To get these OAuth credentials, take a look at OAuth section below.
 
