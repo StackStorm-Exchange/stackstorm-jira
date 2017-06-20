@@ -1,6 +1,6 @@
 ---
 name: transition_issue
-runner_type: run-python
+runner_type: python-script
 description: Do a transition on a JIRA issue / ticket.
 enabled: true
 entry_point: transition_issue.py
