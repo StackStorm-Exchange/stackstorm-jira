@@ -1,6 +1,6 @@
 ---
 name: get_issue
-runner_type: run-python
+runner_type: python-script
 description: Retrieve information about a particular JIRA issue.
 enabled: true
 entry_point: get_issue.py
