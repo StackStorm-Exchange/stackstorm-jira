@@ -19,7 +19,7 @@ class BaseJiraAction(Action):
     def _get_client(self):
         config = self.config
 
-        options = {'server': config['url']}
+        options = {'server': config['url'], 'verify': config['verify']}
 
         rsa_cert_file = config['rsa_cert_file']
         rsa_key_content = self._get_file_content(file_path=rsa_cert_file)

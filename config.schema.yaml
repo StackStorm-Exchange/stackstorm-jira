@@ -4,6 +4,10 @@
     type: "string"
     secret: false
     required: true
+  verify:
+    description: "Verify SSL certificate. Set to False to disable verification. Default True"
+    type: boolean
+    default: True
   rsa_cert_file:
     description: "Path to a private key file, e.g. /home/vagrant/jira.pem"
     type: "string"
