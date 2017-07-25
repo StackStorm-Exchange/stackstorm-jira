@@ -1,5 +1,9 @@
 # Change Log
 
+# 0.6.0
+
+- Added ChatOps alias and workflow for creating issue and assigning to user
+
 # 0.5.1
 
 - Added 'verify' option to disable SSL certificate verification

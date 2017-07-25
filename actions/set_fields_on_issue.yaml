@@ -1,0 +1,32 @@
+---
+name: set_fields_on_issue
+runner_type: run-python
+description: Edit JIRA issue / ticket and set fields.
+enabled: true
+entry_point: create_issue.py
+parameters:
+  issue:
+    type: string
+    description: Issue ID. Usually something like PROJECT-1234.
+    required: true
+  fix_version:
+    type: string
+    description: Set the Fix Version for the issue.
+    required: false
+  status:
+    type: string
+    description: Status to set for the issue.
+    default: Task
+    required: false
+  components:
+    type: array
+    description: Components for the issue.
+    required: false
+  labels:
+    type: array
+    description: Labels for the issue
+    required: false
+  assignee:
+    type: string
+    required: false
+    description: Assignee for the issue
