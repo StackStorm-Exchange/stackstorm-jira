@@ -1,0 +1,19 @@
+---
+name: attach_file_to_issue
+runner_type: python-script
+description: Attach a file to JIRA issue / ticket.
+enabled: true
+entry_point: attach_file_to_issue.py
+parameters:
+  file_path:
+    type: string
+    description: Path of the file to attach to issue.
+    required: true
+  file_name:
+    type: string
+    description: Optional file name for the attachment. If not provided, name of the file on disk is assumed.
+    required: false
+  issue_key:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true
