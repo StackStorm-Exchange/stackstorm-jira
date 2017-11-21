@@ -53,3 +53,16 @@ def to_comment_dict(comment):
         'body': comment.body
     }
     return result
+
+
+def to_attachment_dict(attachment):
+    """
+    :rtype: ``dict``
+    """
+    result = {
+        'filename': attachment.created_at,
+        'size': attachment.size,
+        'created_at': attachment.created,
+        'content': attachment.content,
+    }
+    return result
