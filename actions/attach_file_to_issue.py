@@ -8,22 +8,20 @@ __all__ = [
 class AttachFileToJiraIssueAction(BaseJiraAction):
 
     def run(self, issue_key, file_path, file_name=None):
-        with open(file_path) as attach_file:
-            if file_name == "":
-                file_name = None 
+        if not file_name:
+            file_name = None
 
+        with open(file_path, 'rb') as fp:
             attachment = self._client.add_attachment(
-                issue=issue_key, 
-                attachment=attach_file,
+                issue=issue_key,
+                attachment=fp,
                 filename=file_name)
-            
-            result = {
-                "issue": issue_key,
-                "filename": attachment.filename,
-                "size": attachment.size,
-                "created_at": attachment.created
-            }
 
-            return result
-            
-        raise Exception("Failed attaching file %s to issue %s." % (file_path, issue_key))
+        result = {
+            "issue": issue_key,
+            "filename": attachment.filename,
+            "size": attachment.size,
+            "created_at": attachment.created
+        }
+
+        return result
