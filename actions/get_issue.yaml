@@ -10,11 +10,12 @@ parameters:
     description: Issue key (e.g. PROJECT-1000).
     required: true
   include_comments:
-    type: string
+    type: boolean
     description: True to include issue comments.
     required: true
     default: false
   include_attachments:
-    type: string
+    type: boolean
     description: True to include issue attachments.
     required: true
+    default: false
