@@ -60,7 +60,7 @@ def to_attachment_dict(attachment):
     :rtype: ``dict``
     """
     result = {
-        'filename': attachment.created_at,
+        'filename': attachment.filename,
         'size': attachment.size,
         'created_at': attachment.created,
         'content': attachment.content,
