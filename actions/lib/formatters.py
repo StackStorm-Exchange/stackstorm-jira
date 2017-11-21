@@ -44,6 +44,7 @@ def to_issue_dict(issue, include_comments=False, include_attachments=False):
 
     if include_comments:
         result['comments'] = []
+
         for comment in issue.fields.comment.comments:
             item = to_comment_dict(comment)
             result['comments'].append(item)
@@ -53,7 +54,7 @@ def to_issue_dict(issue, include_comments=False, include_attachments=False):
 
         for attachment in issue.fields.attachment:
             item = to_attachment_dict(attachment)
-            result['attachment'].append(item)
+            result['attachments'].append(item)
 
     return result
 
