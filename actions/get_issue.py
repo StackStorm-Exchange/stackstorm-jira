@@ -7,7 +7,8 @@ __all__ = [
 
 
 class GetJiraIssueAction(BaseJiraAction):
-    def run(self, issue_key):
+    def run(self, issue_key, include_comments=False, include_attachments=False):
         issue = self._client.issue(issue_key)
-        result = to_issue_dict(issue=issue)
+        result = to_issue_dict(issue=issue, include_comments=include_comments,
+                               include_attachments=include_attachments)
         return result

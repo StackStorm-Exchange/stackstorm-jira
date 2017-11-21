@@ -1,0 +1,11 @@
+---
+name: get_issue_attachments
+runner_type: python-script
+description: Retrieve attachments for a particular JIRA issue.
+enabled: true
+entry_point: get_issue_attachments.py
+parameters:
+  issue_key:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true
