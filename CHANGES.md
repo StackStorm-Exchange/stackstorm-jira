@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.7.0
+
+- Add new ``jira.search_issues`` action
+
 ## 0.6.0
 
 - Add new ``jira.get_issue_comments`` action

@@ -1,0 +1,31 @@
+---
+name: search_issues
+runner_type: python-script
+description: Search JIRA issues with a JQL query
+enabled: true
+entry_point: search_issues.py
+parameters:
+  query:
+    type: string
+    description: JQL query string
+    required: true
+  start_at:
+    type: integer
+    description: Offset for pagination
+    required: false
+    default: 0
+  max_results:
+    type: integer
+    description: Maximum number of returned results
+    default: 50
+    required: false
+  include_comments:
+    type: boolean
+    description: True to include issue comments.
+    required: true
+    default: false
+  include_attachments:
+    type: boolean
+    description: True to include issue attachments.
+    required: true
+    default: false
