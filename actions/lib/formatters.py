@@ -4,7 +4,8 @@ __all__ = [
 ]
 
 
-def to_issue_dict(issue, include_comments=False, include_attachments=False):
+def to_issue_dict(issue, include_comments=False, include_attachments=False,
+                  include_customfields=False):
     """
     :rtype: ``dict``
     """
@@ -41,6 +42,13 @@ def to_issue_dict(issue, include_comments=False, include_attachments=False):
         'updated_at': issue.fields.updated,
         'resolved_at': issue.fields.resolutiondate
     }
+
+    if include_customfields:
+        for key in issue.raw['fields']:
+            if not key.startswith('customfield_'):
+                continue
+
+            result[key] = issue.raw['fields'][key]
 
     if include_comments:
         result['comments'] = []
