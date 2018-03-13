@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.7.1
+
+- Return custom fields in formatter
+
 ## 0.7.0
 
 - Add new ``jira.search_issues`` action

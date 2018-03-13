@@ -29,3 +29,8 @@ parameters:
     description: True to include issue attachments.
     required: true
     default: false
+  include_customfields:
+    type: boolean
+    description: True to include custom fields.
+    required: true
+    default: false
