@@ -4,7 +4,8 @@ __all__ = [
 ]
 
 
-def to_issue_dict(issue):
+def to_issue_dict(issue, include_comments=False, include_attachments=False,
+                  include_customfields=False):
     """
     :rtype: ``dict``
     """
@@ -41,6 +42,28 @@ def to_issue_dict(issue):
         'updated_at': issue.fields.updated,
         'resolved_at': issue.fields.resolutiondate
     }
+
+    if include_customfields:
+        for key in issue.raw['fields']:
+            if not key.startswith('customfield_'):
+                continue
+
+            result[key] = issue.raw['fields'][key]
+
+    if include_comments:
+        result['comments'] = []
+
+        for comment in issue.fields.comment.comments:
+            item = to_comment_dict(comment)
+            result['comments'].append(item)
+
+    if include_attachments:
+        result['attachments'] = []
+
+        for attachment in issue.fields.attachment:
+            item = to_attachment_dict(attachment)
+            result['attachments'].append(item)
+
     return result
 
 
@@ -51,5 +74,18 @@ def to_comment_dict(comment):
     result = {
         'id': comment.id,
         'body': comment.body
+    }
+    return result
+
+
+def to_attachment_dict(attachment):
+    """
+    :rtype: ``dict``
+    """
+    result = {
+        'filename': attachment.filename,
+        'size': attachment.size,
+        'created_at': attachment.created,
+        'content': attachment.content,
     }
     return result
