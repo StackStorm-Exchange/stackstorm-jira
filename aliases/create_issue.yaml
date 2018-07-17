@@ -2,6 +2,7 @@
 name: "create_jira_issue"
 action_ref: "jira.create_issue"
 description: "Create a JIRA issue."
+enabled: false
 formats:
     - "create issue with summary {{summary}} description {{description}} of type {{type}}"
     - "JIRA summary {{summary}} description {{description}} type {{type}} fix_version {{fix_version}}"
@@ -13,5 +14,5 @@ ack:
     format: "Got it! Creating that issue for you... :book:."
 result:
     format: |
-        You are now an obedient follower of Agile/Scrum BS.
+        You are now an obedient follower of Agile/Scrum.
         You can view your task here: {{execution.result.result.url}}
