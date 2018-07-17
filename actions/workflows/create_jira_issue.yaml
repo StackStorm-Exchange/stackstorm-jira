@@ -1,0 +1,45 @@
+version: '2.0'
+
+jira.create_jira_issue:
+    description: Create a JIRA issue.
+    type: direct
+    input:
+      - project
+      - summary
+      - description
+      - type
+      - labels
+      - components
+      - priority
+      - assignee
+      - fix_version
+      - status
+
+
+    output:
+        url: null
+
+    tasks:
+        create_simple_issue:
+          action: jira.create_issue
+          input:
+            summary: <% $.summary %>
+            description: <% $.description %>
+            type: <% $.type %>
+            project: <% $.project %>
+          publish:
+            url: <% task(create_simple_issue).result.url %>
+          on-success:
+            - edit_issue_and_set_fields
+          on-error:
+            - fail
+
+        edit_issue_and_set_fields:
+          action: jira.set_fields_on_issue
+          input:
+            issue: <% task(create_simple_issue).result.name %>
+            assignee: <% $.assignee %>
+            fix_version: <% $.fix_version %>
+            labels: <% $.labels %>
+            components: <% $.components %>
+            status: <% $.status %>

@@ -1,0 +1,49 @@
+---
+name: create_issue
+runner_type: action-chain
+description: Create a new JIRA issue / ticket with fix_version and epic.
+enabled: true
+entry_point: workflows/create_jira_issue.yaml
+parameters:
+  summary:
+    type: string
+    description: Issue summary.
+    required: true
+  type:
+    type: string
+    description: "Issue type. Typical issues type include Task, Story, Epic, Bug. You can also specify a custom issue type."
+    default: Task
+    required: true
+  description:
+    type: string
+    description: Issue description.
+    required: false
+  project:
+    type: string
+    description: destination Project in Jira.
+    required: false
+  labels:
+    type: array
+    description: List of labels for issue
+    required: false
+  fix_version:
+    type: string
+    description: Fix version to file the task under
+    required: false
+  assignee:
+    type: string
+    description: Assign this task to a person.
+    required: false
+  components:
+    type: array
+    description: List of components
+    required: false
+  priority:
+    type: string
+    description: Priority fix_version the issue.
+    required: false
+    enum:
+        - Blocker
+        - Critical
+        - Major
+        - Minor

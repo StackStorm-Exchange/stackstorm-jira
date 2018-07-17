@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.0
+
+- Added ChatOps alias and workflow for creating issue and assigning to user
+
 ## 0.7.1
 
 - Return custom fields in formatter
