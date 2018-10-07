@@ -15,16 +15,23 @@ Copy the example configuration in [jira.yaml.example](./jira.yaml.example)
 to `/opt/stackstorm/configs/jira.yaml` and edit as required.
 
 * ``url`` - URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)
-* ``rsa_cert_file`` - Path to the file with a private key.
-* ``oauth_token`` - OAuth token.
-* ``oauth_secret`` - OAuth secret.
-* ``consumer_key`` - Consumer key.
 * ``poll_interval`` - Polling interval - default 30s
 * ``project`` - Key of the project which will be used as a default with some of the actions which
   don't require or allow you to specify a project (e.g. ``STORM``).
 * ``verify`` - Verify SSL certificates. Default True. Set to False to disable verification
+* ``auth_method`` - Specify either `basic` or `oauth` authentication
 
-To get these OAuth credentials, take a look at OAuth section below.
+Include the following settings when using the `oauth` auth_method:
+* ``rsa_cert_file`` - Path to the file with a private key
+* ``oauth_token`` - OAuth token
+* ``oauth_secret`` - OAuth secret
+* ``consumer_key`` - Consumer key
+
+Include the following settings when using the `basic` auth_method:
+* ``username`` - Username
+* ``password`` - Password
+
+If using the `oauth` auth_method, take a look at the OAuth section below for further setup instructions.
 
 You can also use dynamic values from the datastore. See the
 [docs](https://docs.stackstorm.com/reference/pack_configs.html) for more info.

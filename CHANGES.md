@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.0
+
+- Adding support for BASIC authentication
+
 ## 0.7.1
 
 - Return custom fields in formatter

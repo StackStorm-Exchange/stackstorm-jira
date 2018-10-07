@@ -8,26 +8,42 @@
     description: "Verify SSL certificate. Set to False to disable verification. Default True"
     type: boolean
     default: True
+  auth_method:
+    description: "Specifies which method of authentication will be used (oauth or basic)"
+    type: "string"
+    secret: false
+    required: true
+    default: "oauth"
+  username:
+    description: "Username when using the basic auth_method"
+    type: "string"
+    secret: false
+    required: false
+  password:
+    description: "Password when using the basic auth_method"
+    type: "string"
+    secret: true
+    required: false
   rsa_cert_file:
     description: "Path to a private key file, e.g. /home/vagrant/jira.pem"
     type: "string"
     secret: false
-    required: true
+    required: false
   oauth_token:
     description: "OAuth token"
     type: "string"
     secret: true
-    required: true
+    required: false
   oauth_secret:
     description: "OAuth secret"
     type: "string"
     secret: true
-    required: true
+    required: false
   consumer_key:
     description: "Consumer key"
     type: "string"
     secret: true
-    required: true
+    required: false
   poll_interval:
     description: "Polling interval - default 30s"
     type: "integer"
