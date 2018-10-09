@@ -39,20 +39,33 @@ class JIRASensor(PollingSensor):
 
     def setup(self):
         self._jira_url = self._config['url']
-        rsa_cert_file = self._config['rsa_cert_file']
-        if not os.path.exists(rsa_cert_file):
-            raise Exception('Cert file for JIRA OAuth not found at %s.' % rsa_cert_file)
-        self._rsa_key = self._read_cert(rsa_cert_file)
-        self._poll_interval = self._config.get('poll_interval', self._poll_interval)
-        oauth_creds = {
-            'access_token': self._config['oauth_token'],
-            'access_token_secret': self._config['oauth_secret'],
-            'consumer_key': self._config['consumer_key'],
-            'key_cert': self._rsa_key
-        }
+        auth_method = self._config['auth_method']
 
-        self._jira_client = JIRA(options={'server': self._jira_url},
-                                 oauth=oauth_creds)
+        if auth_method == 'oauth':
+            rsa_cert_file = self._config['rsa_cert_file']
+            if not os.path.exists(rsa_cert_file):
+                raise Exception('Cert file for JIRA OAuth not found at %s.' % rsa_cert_file)
+            self._rsa_key = self._read_cert(rsa_cert_file)
+            self._poll_interval = self._config.get('poll_interval', self._poll_interval)
+            oauth_creds = {
+                'access_token': self._config['oauth_token'],
+                'access_token_secret': self._config['oauth_secret'],
+                'consumer_key': self._config['consumer_key'],
+                'key_cert': self._rsa_key
+            }
+
+            self._jira_client = JIRA(options={'server': self._jira_url},
+                                     oauth=oauth_creds)
+        elif auth_method == 'basic':
+            basic_creds = (self._config['username'], self._config['password'])
+            self._jira_client = JIRA(options={'server': self._jira_url},
+                                     basic_auth=basic_creds)
+
+        else:
+            msg = ('You must set auth_method to either "oauth"',
+                   'or "basic" your jira.yaml config file.')
+            raise Exception(msg)
+
         if self._projects_available is None:
             self._projects_available = set()
             for proj in self._jira_client.projects():

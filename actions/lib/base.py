@@ -21,17 +21,30 @@ class BaseJiraAction(Action):
 
         options = {'server': config['url'], 'verify': config['verify']}
 
-        rsa_cert_file = config['rsa_cert_file']
-        rsa_key_content = self._get_file_content(file_path=rsa_cert_file)
+        auth_method = config['auth_method']
 
-        oauth_creds = {
-            'access_token': config['oauth_token'],
-            'access_token_secret': config['oauth_secret'],
-            'consumer_key': config['consumer_key'],
-            'key_cert': rsa_key_content
-        }
+        if auth_method == 'oauth':
+            rsa_cert_file = config['rsa_cert_file']
+            rsa_key_content = self._get_file_content(file_path=rsa_cert_file)
 
-        client = JIRA(options=options, oauth=oauth_creds)
+            oauth_creds = {
+                'access_token': config['oauth_token'],
+                'access_token_secret': config['oauth_secret'],
+                'consumer_key': config['consumer_key'],
+                'key_cert': rsa_key_content
+            }
+
+            client = JIRA(options=options, oauth=oauth_creds)
+
+        elif auth_method == 'basic':
+            basic_creds = (config['username'], config['password'])
+            client = JIRA(options=options, basic_auth=basic_creds)
+
+        else:
+            msg = ('You must set auth_method to either "oauth"',
+                   'or "basic" your jira.yaml config file.')
+            raise Exception(msg)
+
         return client
 
     def _get_file_content(self, file_path):
