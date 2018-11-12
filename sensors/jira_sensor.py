@@ -93,17 +93,12 @@ class JIRASensor(PollingSensor):
         pass
 
     def _detect_new_issues(self):
-        loop = True
-        while loop:
-            new_issues = self._jira_client.search_issues(self._jql_query, maxResults=50,
-                                                         startAt=0)
-            for issue in new_issues:
-                if issue.key not in self._issues_in_project:
-                    self._dispatch_issues_trigger(issue)
-                    self._issues_in_project[issue.key] = issue
-                else:
-                    loop = False  # Hit a task already in issues known. Stop getting issues.
-                    break
+        new_issues = self._jira_client.search_issues(self._jql_query, maxResults=50, startAt=0)
+
+        for issue in new_issues:
+            if issue.key not in self._issues_in_project:
+                self._dispatch_issues_trigger(issue)
+                self._issues_in_project[issue.key] = issue
 
     def _dispatch_issues_trigger(self, issue):
         trigger = self._trigger_ref
