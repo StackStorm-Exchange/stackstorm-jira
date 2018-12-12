@@ -19,13 +19,14 @@ class BaseJiraAction(Action):
     def _get_client(self,profile=None):
         config = self.config
         profile_name = profile
+
         default_profile = config.get('default_profile', None)
 
         if profile_name is None and default_profile is None:
             profile_name = "inline"
         elif profile_name is None and len(default_profile) > 0:
             profile_name = default_profile
-        else
+        else:
             profile_name = profile
 
         profile = self._build_profile(profile_name)
@@ -59,37 +60,37 @@ class BaseJiraAction(Action):
 
         return client
 
-    def _build_profile(self, profile)
-        conf = self.config
+    def _build_profile(self, profile_name):
+        config = self.config
         profile = {}
 
-        if profile == "inline".lower():
-                profile['server'] = config['server']
-                profile['verify'] = config['verify']
-                profile['auth_method'] = config['auth_method']
-                profile['rsa_cert_file'] = config['rsa_cert_file']
-                profile['oauth_token'] =  config['oauth_token']
-                profile['oauth_secret'] = config['oauth_secret']
-                profile['consumer_key'] = config['consumer_key']
-                profile['username'] = config['username']
-                profile['password'] = config['password']
+        if profile_name == "inline".lower():
+                profile['url'] = config.get('url')
+                profile['verify'] = config.get('verify')
+                profile['auth_method'] = config.get('auth_method')
+                profile['rsa_cert_file'] = config.get('rsa_cert_file')
+                profile['oauth_token'] =  config.get('oauth_token')
+                profile['oauth_secret'] = config.get('oauth_secret')
+                profile['consumer_key'] = config.get('consumer_key')
+                profile['username'] = config.get('username')
+                profile['password'] = config.get('password')
         else:
             if 'profiles' in config and len(config['profiles']) > 0:
                 for profile_cfg in config['profiles']:
-                    if profile_cfg['name'].lower() == profile.lower():
-                        profile['server'] = profile_cfg['server']
-                        profile['verify'] = profile_cfg['verify']
-                        profile['auth_method'] = profile_cfg['auth_method']
-                        profile['rsa_cert_file'] = profile_cfg['rsa_cert_file']
-                        profile['oauth_token'] =  profile_cfg['oauth_token']
-                        profile['oauth_secret'] = profile_cfg['oauth_secret']
-                        profile['consumer_key'] = profile_cfg['consumer_key']
-                        profile['username'] = profile_cfg['username']
-                        profile['password'] = profile_cfg['password'] 
+                    if profile_cfg['name'].lower() == profile_name.lower():
+                        profile['url'] = profile_cfg.get('url')
+                        profile['verify'] = profile_cfg.get('verify')
+                        profile['auth_method'] = profile_cfg.get('auth_method')
+                        profile['rsa_cert_file'] = profile_cfg.get('rsa_cert_file')
+                        profile['oauth_token'] =  profile_cfg.get('oauth_token')
+                        profile['oauth_secret'] = profile_cfg.get('oauth_secret')
+                        profile['consumer_key'] = profile_cfg.get('consumer_key')
+                        profile['username'] = profile_cfg.get('username')
+                        profile['password'] = profile_cfg.get('password')
                         break
             else:
                 msg = ('No configuration file called: %s found. Please check your config file' % profile)
-                 
+                
         if len(profile.items()) == 0:
             msg = ('No configuration profile found. Please check your config file for the profile you have specified.')
             raise Exception(msg)
