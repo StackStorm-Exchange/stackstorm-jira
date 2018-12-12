@@ -14,30 +14,42 @@ class Action(object):
 class BaseJiraAction(Action):
     def __init__(self, config):
         super(BaseJiraAction, self).__init__(config=config)
-        self._client = self._get_client()
+        #self._client = self._get_client()
 
-    def _get_client(self):
+    def _get_client(self,profile=None):
         config = self.config
+        profile_name = profile
+        default_profile = config.get('default_profile', None)
 
-        options = {'server': config['url'], 'verify': config['verify']}
+        if profile_name is None and default_profile is None:
+            profile_name = "inline"
+        elif profile_name is None and len(default_profile) > 0:
+            profile_name = default_profile
+        else
+            profile_name = profile
 
-        auth_method = config['auth_method']
+        profile = self._build_profile(profile_name)
+
+        
+        options = {'server': profile['url'], 'verify': profile['verify']}
+
+        auth_method = profile['auth_method']
 
         if auth_method == 'oauth':
-            rsa_cert_file = config['rsa_cert_file']
+            rsa_cert_file = profile['rsa_cert_file']
             rsa_key_content = self._get_file_content(file_path=rsa_cert_file)
 
             oauth_creds = {
-                'access_token': config['oauth_token'],
-                'access_token_secret': config['oauth_secret'],
-                'consumer_key': config['consumer_key'],
+                'access_token': profile['oauth_token'],
+                'access_token_secret': profile['oauth_secret'],
+                'consumer_key': profile['consumer_key'],
                 'key_cert': rsa_key_content
             }
 
             client = JIRA(options=options, oauth=oauth_creds)
 
         elif auth_method == 'basic':
-            basic_creds = (config['username'], config['password'])
+            basic_creds = (profile['username'], profile['password'])
             client = JIRA(options=options, basic_auth=basic_creds)
 
         else:
@@ -46,6 +58,43 @@ class BaseJiraAction(Action):
             raise Exception(msg)
 
         return client
+
+    def _build_profile(self, profile)
+        conf = self.config
+        profile = {}
+
+        if profile == "inline".lower():
+                profile['server'] = config['server']
+                profile['verify'] = config['verify']
+                profile['auth_method'] = config['auth_method']
+                profile['rsa_cert_file'] = config['rsa_cert_file']
+                profile['oauth_token'] =  config['oauth_token']
+                profile['oauth_secret'] = config['oauth_secret']
+                profile['consumer_key'] = config['consumer_key']
+                profile['username'] = config['username']
+                profile['password'] = config['password']
+        else:
+            if 'profiles' in config and len(config['profiles']) > 0:
+                for profile_cfg in config['profiles']:
+                    if profile_cfg['name'].lower() == profile.lower():
+                        profile['server'] = profile_cfg['server']
+                        profile['verify'] = profile_cfg['verify']
+                        profile['auth_method'] = profile_cfg['auth_method']
+                        profile['rsa_cert_file'] = profile_cfg['rsa_cert_file']
+                        profile['oauth_token'] =  profile_cfg['oauth_token']
+                        profile['oauth_secret'] = profile_cfg['oauth_secret']
+                        profile['consumer_key'] = profile_cfg['consumer_key']
+                        profile['username'] = profile_cfg['username']
+                        profile['password'] = profile_cfg['password'] 
+                        break
+            else:
+                msg = ('No configuration file called: %s found. Please check your config file' % profile)
+                 
+        if len(profile.items()) == 0:
+            msg = ('No configuration profile found. Please check your config file for the profile you have specified.')
+            raise Exception(msg)
+
+        return profile
 
     def _get_file_content(self, file_path):
         with open(file_path, 'r') as fp:
