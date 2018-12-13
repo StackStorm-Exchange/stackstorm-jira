@@ -1,0 +1,29 @@
+---
+  url: "https://company.atlassian.net"
+  rsa_cert_file: "/home/vagrant/jira.pem"
+  auth_method: "oauth"
+  oauth_token: ""
+  oauth_secret: ""
+  consumer_key: ""
+  poll_interval: 30
+  project: "MY_PROJECT"
+  verify: True
+  default_profile: "dev"
+  profiles:
+    - name: "dev"
+      url: "https://dev.atlassian.net"
+      rsa_cert_file: "/home/vagrant/jira.pem"
+      auth_method: "basic"
+      username: "dev-user"
+      password: "mypas"
+      project: "MY_PROJECT"
+      verify: True    
+    - name: "prod"
+      url: "https://prod.atlassian.net"
+      rsa_cert_file: "/home/vagrant/jira.pem"
+      auth_method: "oauth"
+      oauth_token: ""
+      oauth_secret: ""
+      consumer_key: ""
+      project: "MY_PROJECT"
+      verify: True      

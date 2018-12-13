@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.9.0
+
+- Added config profile support for actions. See profile section in readme.
+- Add new config option ``profiles`` this mimicks the jira configuration options to allow for multi jira connections.
+- Add new config option ``default_profile`` sets a default profile. If left blank will use the current config method
+- Add new action option ``config_profile`` to all actions. This will tell the action to use a different config profile then the default profile.
+
+
 ## 0.8.0
 
 - Adding support for BASIC authentication
