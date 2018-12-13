@@ -32,7 +32,6 @@ class BaseJiraAction(Action):
 
         profile = self._build_profile(profile_name)
 
-        
         options = {'server': profile['url'], 'verify': profile['verify']}
 
         auth_method = profile['auth_method']

@@ -13,8 +13,8 @@ class CreateJiraIssueAction(BaseJiraAction):
 
         if config_profile:
             self._client = self._get_client(config_profile)
-                      
-        #project = project or self.config['project']
+   
+        # project = project or self.config['project']
         project = project or self.project
         data = {
             'project': {'key': project},
