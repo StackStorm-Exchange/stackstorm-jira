@@ -14,7 +14,8 @@ class Action(object):
 class BaseJiraAction(Action):
     def __init__(self, config):
         super(BaseJiraAction, self).__init__(config=config)
-        #self._client = self._get_client()
+        self._client = self._get_client()
+        self.project = ""
 
     def _get_client(self,profile=None):
         config = self.config
@@ -74,6 +75,7 @@ class BaseJiraAction(Action):
                 profile['consumer_key'] = config.get('consumer_key')
                 profile['username'] = config.get('username')
                 profile['password'] = config.get('password')
+                self.project = config.get("project")
         else:
             if 'profiles' in config and len(config['profiles']) > 0:
                 for profile_cfg in config['profiles']:
@@ -87,10 +89,11 @@ class BaseJiraAction(Action):
                         profile['consumer_key'] = profile_cfg.get('consumer_key')
                         profile['username'] = profile_cfg.get('username')
                         profile['password'] = profile_cfg.get('password')
+                        self.project = config.get("project")
                         break
             else:
                 msg = ('No configuration file called: %s found. Please check your config file' % profile)
-                
+
         if len(profile.items()) == 0:
             msg = ('No configuration profile found. Please check your config file for the profile you have specified.')
             raise Exception(msg)

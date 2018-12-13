@@ -3,7 +3,7 @@
     description: "URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)"
     type: "string"
     secret: false
-    required: true
+    required: false
   verify:
     description: "Verify SSL certificate. Set to False to disable verification. Default True"
     type: boolean
@@ -12,7 +12,7 @@
     description: "Authentication method to use - oauth or basic"
     type: "string"
     secret: false
-    required: true
+    required: false
     default: "oauth"
     enum:
       - oauth
@@ -57,7 +57,7 @@
     description: "Project to be used as default for actions that don't require or allow a project"
     type: "string"
     secret: false
-    required: true
+    required: false
   default_profile:
     description: "Select which profile will be default. If left blank will use the standard Jira connection details"
     type: "string"

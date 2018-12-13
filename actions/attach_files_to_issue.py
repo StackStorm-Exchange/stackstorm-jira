@@ -7,8 +7,11 @@ __all__ = [
 
 class AttachFilesToJiraIssueAction(BaseJiraAction):
 
-    def run(self, issue_key, file_paths):
+    def run(self, issue_key, file_paths,config_profile=None):
         result = []
+
+        if config_profile:
+            self._client = self._get_client(config_profile)
 
         for file_path in file_paths:
             with open(file_path, 'rb') as fp:

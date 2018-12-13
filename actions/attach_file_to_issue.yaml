@@ -17,3 +17,7 @@ parameters:
     type: string
     description: Issue key (e.g. PROJECT-1000).
     required: true
+  config_profile:
+    type: string
+    description: Select which jira config profile to use.
+    required: false        

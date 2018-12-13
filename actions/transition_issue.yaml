@@ -13,3 +13,7 @@ parameters:
     type: string
     description: Name of transition (e.g. Close, Start Progress, etc).
     required: true
+  config_profile:
+    type: string
+    description: Select which jira config profile to use.
+    required: false

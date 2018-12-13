@@ -24,3 +24,7 @@ parameters:
     description: True to include custom fields.
     required: true
     default: false
+  config_profile:
+    type: string
+    description: Select which jira config profile to use.
+    required: false    
