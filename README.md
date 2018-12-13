@@ -46,22 +46,28 @@ The configuration allows for multi jira definitions. This will allow for the aut
 Profiles are defined within the ``profile`` section of the configuration and they accept the same parameters as the inline options.
 This option takes in an array of profile options.
 
-This being: 
+General Options
+ - ``name``
  - ``url``
  - ``verify``
+ - ``project``
  - ``auth_method``
+  
+OAuth Options
  - ``rsa_cert_file``
  - ``oauth_token``
  - ``oauth_secret``
  - ``consumer_key``
+
+Basic Auth Options
  - ``username``
  - ``password``
 
-An additional parameter is ``name`` this defines the name of the profile.
+The ``name`` defines the name of the profile. This option is used to define the default profile and used within actions to define with config profile to use.
 
-To define a default profile you can use a config option of ``config_profile``. If set to ``inline`` or not defined it will use the standard configuration options.
+To define a default profile you can use a config option of ``default_profile``. If set to ``inline`` or not defined it will use the standard configuration options.
 
-See [jira-profiles.yaml.example] for an example of how to use profiles.
+See [jira-profiles.yaml.example](./jira-profiles.yaml.example) for an example of how to use profiles.
 
 To enable the the use of a profile within an action use the ``config_profile`` action option and set it to the same name as the profile you wish to use.
 
