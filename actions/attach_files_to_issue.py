@@ -7,7 +7,7 @@ __all__ = [
 
 class AttachFilesToJiraIssueAction(BaseJiraAction):
 
-    def run(self, issue_key, file_paths,config_profile=None):
+    def run(self, issue_key, file_paths, config_profile=None):
         result = []
 
         if config_profile:

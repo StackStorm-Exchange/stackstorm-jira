@@ -17,7 +17,7 @@ class BaseJiraAction(Action):
         self._client = self._get_client()
         self.project = ""
 
-    def _get_client(self,profile=None):
+    def _get_client(self, profile=None):
         config = self.config
         profile_name = profile
 
