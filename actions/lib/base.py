@@ -69,7 +69,7 @@ class BaseJiraAction(Action):
                 profile['verify'] = config.get('verify')
                 profile['auth_method'] = config.get('auth_method')
                 profile['rsa_cert_file'] = config.get('rsa_cert_file')
-                profile['oauth_token'] =  config.get('oauth_token')
+                profile['oauth_token'] = config.get('oauth_token')
                 profile['oauth_secret'] = config.get('oauth_secret')
                 profile['consumer_key'] = config.get('consumer_key')
                 profile['username'] = config.get('username')
@@ -83,7 +83,7 @@ class BaseJiraAction(Action):
                         profile['verify'] = profile_cfg.get('verify')
                         profile['auth_method'] = profile_cfg.get('auth_method')
                         profile['rsa_cert_file'] = profile_cfg.get('rsa_cert_file')
-                        profile['oauth_token'] =  profile_cfg.get('oauth_token')
+                        profile['oauth_token'] = profile_cfg.get('oauth_token')
                         profile['oauth_secret'] = profile_cfg.get('oauth_secret')
                         profile['consumer_key'] = profile_cfg.get('consumer_key')
                         profile['username'] = profile_cfg.get('username')
@@ -91,10 +91,12 @@ class BaseJiraAction(Action):
                         self.project = config.get("project")
                         break
             else:
-                msg = ('No configuration file called: %s found. Please check your config file' % profile)
+                msg = ('No configuration file called: %s found. Please check',
+                       'your config file' % profile)
 
         if len(profile.items()) == 0:
-            msg = ('No configuration profile found. Please check your config file for the profile you have specified.')
+            msg = ('No configuration profile found. Please check your config',
+                   'file for the profile you have specified.')
             raise Exception(msg)
 
         return profile
