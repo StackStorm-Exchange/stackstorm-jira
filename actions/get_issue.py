@@ -10,8 +10,7 @@ class GetJiraIssueAction(BaseJiraAction):
     def run(self, issue_key, include_comments=False, include_attachments=False,
             include_customfields=False, config_profile=None):
 
-        if config_profile:
-            self._client = self._get_client(config_profile)
+        super(GetJiraIssueAction, self)._run(config_profile)
 
         issue = self._client.issue(issue_key)
         result = to_issue_dict(issue=issue, include_comments=include_comments,

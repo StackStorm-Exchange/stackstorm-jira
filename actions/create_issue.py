@@ -9,12 +9,11 @@ __all__ = [
 class CreateJiraIssueAction(BaseJiraAction):
 
     def run(self, summary, type, description=None,
-            project=None, extra_fields=None,config_profile=None):
+            project=None, extra_fields=None, config_profile=None):
 
-        if config_profile:
-            self._client = self._get_client(config_profile)
-                      
-        #project = project or self.config['project']
+        super(CreateJiraIssueAction, self)._run(config_profile)
+
+        # project = project or self.config['project']
         project = project or self.project
         data = {
             'project': {'key': project},

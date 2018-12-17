@@ -11,8 +11,7 @@ class SearchJiraIssuesAction(BaseJiraAction):
             include_comments=False, include_attachments=False,
             include_customfields=False, config_profile=None):
 
-        if config_profile:
-            self._client = self._get_client(config_profile)
+        super(SearchJiraIssuesAction, self)._run(config_profile)
 
         issues = self._client.search_issues(query, startAt=start_at,
                                             maxResults=max_results)
