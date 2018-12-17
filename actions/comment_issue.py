@@ -10,8 +10,7 @@ class CommentJiraIssueAction(BaseJiraAction):
 
     def run(self, issue_key, comment_text, config_profile=None):
 
-        if config_profile:
-            self._client = self._get_client(config_profile)
+        super(CommentJiraIssueAction, self)._run(config_profile)
 
         comment = self._client.add_comment(issue_key, comment_text)
         result = to_comment_dict(comment)

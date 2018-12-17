@@ -17,20 +17,13 @@ class BaseJiraAction(Action):
         self._client = self._get_client()
         self.project = ""
 
+    def _run(self, profile=None):
+        if profile:
+            self._client = self._get_client(profile)
+
     def _get_client(self, profile=None):
-        config = self.config
-        profile_name = profile
 
-        default_profile = config.get('default_profile', None)
-
-        if profile_name is None and default_profile is None:
-            profile_name = "inline"
-        elif profile_name is None and len(default_profile) > 0:
-            profile_name = default_profile
-        else:
-            profile_name = profile
-
-        profile = self._build_profile(profile_name)
+        profile = self._build_profile(profile)
 
         options = {'server': profile['url'], 'verify': profile['verify']}
 
@@ -64,40 +57,9 @@ class BaseJiraAction(Action):
         config = self.config
         profile = {}
 
-        if profile_name == "inline".lower():
-                profile['url'] = config.get('url')
-                profile['verify'] = config.get('verify')
-                profile['auth_method'] = config.get('auth_method')
-                profile['rsa_cert_file'] = config.get('rsa_cert_file')
-                profile['oauth_token'] = config.get('oauth_token')
-                profile['oauth_secret'] = config.get('oauth_secret')
-                profile['consumer_key'] = config.get('consumer_key')
-                profile['username'] = config.get('username')
-                profile['password'] = config.get('password')
-                self.project = config.get("project")
-        else:
-            if 'profiles' in config and len(config['profiles']) > 0:
-                for profile_cfg in config['profiles']:
-                    if profile_cfg['name'].lower() == profile_name.lower():
-                        profile['url'] = profile_cfg.get('url')
-                        profile['verify'] = profile_cfg.get('verify')
-                        profile['auth_method'] = profile_cfg.get('auth_method')
-                        profile['rsa_cert_file'] = profile_cfg.get('rsa_cert_file')
-                        profile['oauth_token'] = profile_cfg.get('oauth_token')
-                        profile['oauth_secret'] = profile_cfg.get('oauth_secret')
-                        profile['consumer_key'] = profile_cfg.get('consumer_key')
-                        profile['username'] = profile_cfg.get('username')
-                        profile['password'] = profile_cfg.get('password')
-                        self.project = config.get("project")
-                        break
-            else:
-                msg = ('No configuration file called: %s found. Please check',
-                       'your config file' % profile)
-
-        if len(profile.items()) == 0:
-            msg = ('No configuration profile found. Please check your config',
-                   'file for the profile you have specified.')
-            raise Exception(msg)
+        profiles = config.pop('profiles',{})
+        override_profile = profiles.get(profile_name,{})
+        config.update(override_profile)
 
         return profile
 

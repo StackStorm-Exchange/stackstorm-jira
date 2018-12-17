@@ -1,9 +1,10 @@
 ---
+<<: &profile_options_anchor
   url:
     description: "URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)"
     type: "string"
     secret: false
-    required: false
+    required: true
   verify:
     description: "Verify SSL certificate. Set to False to disable verification. Default True"
     type: boolean
@@ -12,7 +13,7 @@
     description: "Authentication method to use - oauth or basic"
     type: "string"
     secret: false
-    required: false
+    required: true
     default: "oauth"
     enum:
       - oauth
@@ -58,84 +59,16 @@
     type: "string"
     secret: false
     required: false
-  default_profile:
-    description: "Select which profile will be default. If left blank will use the standard Jira connection details"
-    type: "string"
-    secret: false
-    required: false
-  profiles:
-    description: "Jira Connection profile."
-    type: "array"
-    required: false
-    items:
-      type: "object"
-      required: false
-      additionalProperties: false
-      properties:
-        name:
-          description: "Name of the profile"
-          type: "string"
-          secret: false
-          reqiured: true
-        url:
-          description: "URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)"
-          type: "string"
-          secret: false
-          required: true
-        verify:
-          description: "Verify SSL certificate. Set to False to disable verification. Default True"
-          type: boolean
-          default: True
-        auth_method:
-          description: "Authentication method to use - oauth or basic"
-          type: "string"
-          secret: false
-          required: true
-          default: "oauth"
-          enum:
-            - oauth
-            - basic
-        username:
-          description: "Username if using the basic auth_method"
-          type: "string"
-          secret: false
-          required: false
-        password:
-          description: "Password if using the basic auth_method"
-          type: "string"
-          secret: true
-          required: false
-        rsa_cert_file:
-          description: "Path to a private key file, e.g. /home/vagrant/jira.pem"
-          type: "string"
-          secret: false
-          required: false
-        oauth_token:
-          description: "OAuth token"
-          type: "string"
-          secret: true
-          required: false
-        oauth_secret:
-          description: "OAuth secret"
-          type: "string"
-          secret: true
-          required: false
-        consumer_key:
-          description: "Consumer key"
-          type: "string"
-          secret: true
-          required: false
-        poll_interval:
-          description: "Polling interval - default 30s"
-          type: "integer"
-          secret: false
-          required: false
-          default: 30
-        project:
-          description: "Project to be used as default for actions that don't require or allow a project"
-          type: "string"
-          secret: false
-          required: true        
+profiles:
+  description: "Jira Connection profile."
+  type: object
+  required: false
+  properties: {}
+  additionalProperties:
+    type: object
+    additionalProperties: false
+    properties:
+      <<: *profile_options_anchor
 
       
   

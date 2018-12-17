@@ -9,8 +9,7 @@ __all__ = [
 class GetJiraIssueAttachmentsAction(BaseJiraAction):
     def run(self, issue_key, config_profile=None):
 
-        if config_profile:
-            self._client = self._get_client(config_profile)
+        super(GetJiraIssueAttachmentsAction, self)._run(config_profile)
 
         issue = self._client.issue(issue_key)
 
