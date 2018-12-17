@@ -54,10 +54,10 @@ class BaseJiraAction(Action):
     def _build_profile(self, profile_name):
         config = self.config
 
-        profiles = config.pop('profiles',{})
-        profile = profiles.get(profile_name,{})
-        if profile.get('url', None) == None:
-          profile = config
+        profiles = config.pop('profiles', {})
+        profile = profiles.get(profile_name, {})
+        if profile.get('url', None) is None:
+            profile = config
 
         return profile
 
