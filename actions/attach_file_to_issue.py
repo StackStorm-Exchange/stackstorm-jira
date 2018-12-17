@@ -9,8 +9,7 @@ class AttachFileToJiraIssueAction(BaseJiraAction):
 
     def run(self, issue_key, file_path, file_name=None, config_profile=None):
 
-        if config_profile:
-            self._client = self._get_client(config_profile)
+        super(AttachFileToJiraIssueAction, self)._run(config_profile)
 
         if not file_name:
             file_name = None
