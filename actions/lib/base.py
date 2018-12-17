@@ -14,12 +14,10 @@ class Action(object):
 class BaseJiraAction(Action):
     def __init__(self, config):
         super(BaseJiraAction, self).__init__(config=config)
-        self._client = self._get_client()
         self.project = ""
 
     def _run(self, profile=None):
-        if profile:
-            self._client = self._get_client(profile)
+        self._client = self._get_client(profile)
 
     def _get_client(self, profile=None):
 
@@ -55,11 +53,11 @@ class BaseJiraAction(Action):
 
     def _build_profile(self, profile_name):
         config = self.config
-        profile = {}
 
         profiles = config.pop('profiles',{})
-        override_profile = profiles.get(profile_name,{})
-        config.update(override_profile)
+        profile = profiles.get(profile_name,{})
+        if profile.get('url', None) == None:
+          profile = config
 
         return profile
 

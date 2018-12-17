@@ -1,5 +1,5 @@
 ---
-<<: &profile_options_anchor
+<<: &profile_options
   url:
     description: "URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)"
     type: "string"
@@ -68,7 +68,4 @@ profiles:
     type: object
     additionalProperties: false
     properties:
-      <<: *profile_options_anchor
-
-      
-  
+      <<: *profile_options
