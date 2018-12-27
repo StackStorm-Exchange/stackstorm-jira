@@ -76,3 +76,18 @@ class JIRASensorForAPIv2TestCase(BaseSensorTestCase):
         sensor.poll()
         payload = self.get_dispatched_triggers()[0]['payload']
         self.assertEqual(payload, PAYLOAD)
+
+        # 1 new issue
+        issue = mock.Mock()
+        issue.raw = MOCK_ISSUE_RAW
+        issue.id = ISSUE_ID
+        issue.self = ISSUE_SELF
+        issue.key = ISSUE_KEY
+
+        sensor._project = PROJECT_NAME
+        sensor._jira_url = JIRA_URL
+        sensor._jira_client.search_issues.return_value = [issue]
+
+        sensor.poll()
+        payload = self.get_dispatched_triggers()[0]['payload']
+        self.assertEqual(payload, PAYLOAD)

@@ -105,9 +105,9 @@ class JIRASensorForAPIv2(PollingSensor):
         payload = {}
         payload['project'] = self._project
         payload['id'] = issue.id
-        payload['expand'] = issue.raw['expand']
+        payload['expand'] = issue.raw.get('expand', '')
         payload['issue_key'] = issue.key
         payload['issue_url'] = issue.self
         payload['issue_browse_url'] = self._jira_url + '/browse/' + issue.key
-        payload['fields'] = issue.raw['fields']
+        payload['fields'] = issue.raw.get('fields', {})
         self._sensor_service.dispatch(trigger, payload)
