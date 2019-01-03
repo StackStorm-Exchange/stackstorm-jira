@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.1
+
+- Version bump to fix tagging issue, no code changes
+
 ## 0.8.0
 
 - Adding support for BASIC authentication
