@@ -1,4 +1,4 @@
-jira
-pyyaml
-cryptography
-pyjwt
+jira==2.0.0
+pyyaml==3.13
+cryptography==2.4.1
+pyjwt==1.6.4
