@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.9.0
+
+- Add new ``jira.issues_tracker_for_apiv2`` sensor
+
 ## 0.8.1
 
 - Version bump to fix tagging issue, no code changes
