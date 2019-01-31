@@ -7,6 +7,5 @@ __all__ = [
 
 class ActionManager(BaseJiraAction):
 
-    def run(self, **kwargs):
-        action = kwargs.pop('action')
-        return getattr(self, action)(**kwargs)
+    def run(self, action, **kwargs):
+        return getattr(self._client, action)(**kwargs)

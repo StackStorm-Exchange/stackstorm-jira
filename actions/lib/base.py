@@ -52,6 +52,3 @@ class BaseJiraAction(Action):
             content = fp.read()
 
         return content
-
-    def assign_issue(self, issue_key, assignee_name):
-        return self._client.assign_issue(issue_key, assignee_name)

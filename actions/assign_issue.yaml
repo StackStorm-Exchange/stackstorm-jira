@@ -9,11 +9,11 @@ parameters:
     default: assign_issue
     immutable: true
     type: string
-  issue_key:
+  issue:
     type: string
     description: Issue key (e.g. PROJECT-1000).
     required: true
-  assignee_name:
+  assignee:
     type: string
     description: Name of user (e.g. charlie).
     required: true
