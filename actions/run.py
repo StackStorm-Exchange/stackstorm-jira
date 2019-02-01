@@ -1,3 +1,4 @@
+from jira.exceptions import JIRAError
 from lib.base import BaseJiraAction
 
 __all__ = [
@@ -8,4 +9,9 @@ __all__ = [
 class ActionManager(BaseJiraAction):
 
     def run(self, action, **kwargs):
-        return getattr(self._client, action)(**kwargs)
+        try:
+            return (True, getattr(self._client, action)(**kwargs))
+        except JIRAError as e:
+            return (False, str(e))
+        except AttributeError as e:
+            return (False, 'Action "%s" is not implemented' % action)
