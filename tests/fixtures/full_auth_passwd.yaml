@@ -1,0 +1,10 @@
+---
+  url: "https://company.atlassian.net"
+  rsa_cert_file: "../tests/fixtures/full.yaml"
+  auth_method: "basic"
+  username: "user"
+  password: "passwd"
+  poll_interval: 30
+  project: "MY_PROJECT"
+  verify: True
+
