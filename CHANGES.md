@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.10.0
+
+- Add new ``jira.assign_issues`` action
+
 ## 0.9.0
 
 - Add new ``jira.issues_tracker_for_apiv2`` sensor

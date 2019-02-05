@@ -1,0 +1,9 @@
+---
+  url: "https://company.atlassian.net"
+  auth_method: "basic"
+  username: "user"
+  password: "passwd"
+  poll_interval: 30
+  project: "MY_PROJECT"
+  verify: True
+
