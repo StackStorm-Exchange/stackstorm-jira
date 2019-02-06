@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.10.1
+
+- Add new ``jira.label_issue`` action
+
 ## 0.10.0
 
 - Add new ``jira.assign_issues`` action
