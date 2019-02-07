@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.10.1
+
+- Updated PyYAML to 4.2b4 for CVE-2017-18342
+
 ## 0.10.0
 
 - Add new ``jira.assign_issues`` action
