@@ -6,7 +6,7 @@ keywords:
   - issues
   - ticket management
   - project management
-version: 0.10.0
+version: 0.10.1
 python_versions:
   - "2"
   - "3"
