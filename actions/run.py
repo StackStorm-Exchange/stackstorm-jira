@@ -18,8 +18,7 @@ class ActionManager(BaseJiraAction):
         except JIRAError as e:
             return (False, str(e))
         except AttributeError as e:
-            return (False, 'Action "%s" is not implemented.\n%s'
-                    % (action, str(e)))
+            return (False, 'Action "%s" is not implemented' % action)
 
     def transition_name_to_id(self, issue, transition_name):
         transitions = self._client.transitions(issue)
