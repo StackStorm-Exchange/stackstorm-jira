@@ -1,0 +1,19 @@
+---
+name: transition_issue_by_name
+runner_type: python-script
+description: Do a transition on a JIRA issue / ticket.
+enabled: true
+entry_point: run.py
+parameters:
+  action:
+    default: transition_issue_by_name
+    immutable: true
+    type: string
+  issue:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true
+  transition_name:
+    type: string
+    description: Name of transition (e.g. Close, Start Progress, etc).
+    required: true
