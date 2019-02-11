@@ -44,3 +44,22 @@ class RunTestCase(JIRABaseActionTestCase):
         (is_success, value) = action.run(action='method')
         self.assertFalse(is_success)
         self.assertEqual(value, "JiraError HTTP error message\n\t")
+
+    @mock.patch('lib.base.JIRA')
+    def test_transition_name_to_id(self, mock_jira):
+        action = self.get_action_instance(self.full_auth_passwd_config)
+
+        def side_effect(*args, **kwargs):
+            return [{'id': '11', 'name': 'Start'},
+                    {'id': '21', 'name': 'Doing'},
+                    {'id': '31', 'name': 'Close'}]
+
+        action._client.transitions.side_effect = side_effect
+
+        kwargs = {'issue': 'ISSUE-XX', 'transition_name': 'Doing'}
+        transition_id = action.transition_name_to_id(**kwargs)
+        self.assertEqual(transition_id, '21')
+
+        kwargs = {'issue': 'ISSUE-XX', 'transition_name': 'Done'}
+        transition_id = action.transition_name_to_id(**kwargs)
+        self.assertEqual(transition_id, None)
