@@ -1,5 +1,10 @@
 # Change Log
 
+
+## 0.12.0
+
+- Add new ``jira.add_field_value`` action
+
 ## 0.11.0
 
 - Add new ``jira.transition_issue_by_name`` action
