@@ -2,7 +2,7 @@
 
 ## 0.10.1
 
-- Add new ``jira.label_issue`` action
+- Add new ``jira.add_field_value`` action
 
 ## 0.10.0
 
