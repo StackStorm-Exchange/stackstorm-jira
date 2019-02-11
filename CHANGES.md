@@ -1,7 +1,7 @@
 # Change Log
 
 
-## 0.11.1
+## 0.12.0
 
 - Add new ``jira.add_field_value`` action
 
