@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build_and_test:
+  build_and_test_python27:
     docker:
       - image: circleci/python:2.7
       - image: rabbitmq:3
@@ -11,24 +11,29 @@ jobs:
 
     environment:
       VIRTUALENV_DIR: "~/virtualenv"
+      # Don't install various StackStorm dependencies which are already
+      # installed by CI again in the various check scripts
+      ST2_INSTALL_DEPS: "0"
 
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "requirements.txt" }}
+          key: v1-dependency-cache-py27-{{ checksum "requirements.txt" }}
       - run:
           name: Download dependencies
           command: |
-            git clone -b master git@github.com:stackstorm-exchange/ci.git ~/ci
+            git clone -b master git://github.com/stackstorm-exchange/ci.git ~/ci
             ~/ci/.circle/dependencies
       - run:
-          name: Run tests
+          name: Run tests (Python 2.7)
           command: ~/ci/.circle/test
       - save_cache:
-          key: v1-dependency-cache-{{ checksum "requirements.txt" }}
+          key: v1-dependency-cache-py27-{{ checksum "requirements.txt" }}
           paths:
             - ~/.cache/pip
             - ~/.apt-cache
+      # NOTE: We use virtualenv files from Python 2.7 step in "deploy" job so we
+      # only persist paths from this job
       - persist_to_workspace:
           root: /
           paths:
@@ -37,6 +42,51 @@ jobs:
             - tmp/st2
             - home/circleci/repo
             - home/circleci/.gitconfig
+
+  # NOTE: Until we add "python_version" metadata attribute to pack.yaml and
+  # explicitly call which packs work with Python 3.x, Python 3.x failures are
+  # not considered fatal
+  build_and_test_python36:
+    docker:
+      - image: circleci/python:3.6
+      - image: rabbitmq:3
+      - image: mongo:3.4
+
+    working_directory: ~/repo
+
+    environment:
+      VIRTUALENV_DIR: "~/virtualenv"
+      # Don't install various StackStorm dependencies which are already
+      # installed by CI again in the various check scripts
+      ST2_INSTALL_DEPS: "0"
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependency-cache-py36-{{ checksum "requirements.txt" }}
+      - run:
+          name: Download dependencies
+          # NOTE: We don't want to use default "-e" option because this means
+          # step will fail immediately on one of the commands failures and we
+          # can't intercept the error and cause non-fatal exit in case pack
+          # doesn't declare support for Python 3
+          shell: /bin/bash
+          command: |
+            git clone -b master git://github.com/stackstorm-exchange/ci.git ~/ci
+            ~/ci/.circle/dependencies ; ~/ci/.circle/exit_on_py3_checks $?
+      - run:
+          name: Run tests (Python 3.6)
+          # NOTE: We don't want to use default "-e" option because this means
+          # step will fail immediately on one of the commands failures and we
+          # can't intercept the error and cause non-fatal exit in case pack
+          # doesn't declare support for Python 3
+          shell: /bin/bash
+          command: ~/ci/.circle/test ; ~/ci/.circle/exit_on_py3_checks $?
+      - save_cache:
+          key: v1-dependency-cache-py36-{{ checksum "requirements.txt" }}
+          paths:
+            - ~/.cache/pip
+            - ~/.apt-cache
 
   deploy:
     docker:
@@ -50,7 +100,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-dependency-cache-{{ checksum "requirements.txt" }}
+          key: v1-dependency-cache-py27-{{ checksum "requirements.txt" }}
       - attach_workspace:
           at: /
       - run:
@@ -62,12 +112,29 @@ jobs:
 
 workflows:
   version: 2
-  build_test_deploy:
+  # Workflow which runs on each push
+  build_test_deploy_on_push:
     jobs:
-      - build_and_test
+      - build_and_test_python27
+      - build_and_test_python36
       - deploy:
           requires:
-            - build_and_test
+            - build_and_test_python27
           filters:
             branches:
               only: master
+  build_test_weekly:
+    jobs:
+      - build_and_test_python27
+      - build_and_test_python36
+    # Workflow which runs nightly - note we don't perform deploy job on nightly
+    # build
+    triggers:
+      # Run nightly build for the pack
+      - schedule:
+          # NOTE: We run it at 1 am UTC on every Saturday
+          cron: "0 1 * * 6"
+          filters:
+            branches:
+              only:
+                - master

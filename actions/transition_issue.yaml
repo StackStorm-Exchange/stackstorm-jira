@@ -11,7 +11,7 @@ parameters:
     required: true
   transition:
     type: string
-    description: Name of transition (e.g. Close, Start Progress, etc).
+    description: ID of transition (e.g. 11, 21, etc).
     required: true
   config_profile:
     type: string
