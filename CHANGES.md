@@ -1,12 +1,35 @@
 # Change Log
 
-## 0.9.0
+## 0.13.0
 
 - Added config profile support for actions. See profile section in readme.
 - Add new config option ``profiles`` this mimicks the jira configuration options to allow for multi jira connections.
-- Add new config option ``default_profile`` sets a default profile. If left blank will use the current config method
 - Add new action option ``config_profile`` to all actions. This will tell the action to use a different config profile then the default profile.
 
+
+## 0.12.0
+
+- Add new ``jira.add_field_value`` action
+
+## 0.11.0
+
+- Add new ``jira.transition_issue_by_name`` action
+
+## 0.10.1
+
+- Updated PyYAML to 4.2b4 for CVE-2017-18342
+
+## 0.10.0
+
+- Add new ``jira.assign_issues`` action
+
+## 0.9.0
+
+- Add new ``jira.issues_tracker_for_apiv2`` sensor
+
+## 0.8.1
+
+- Version bump to fix tagging issue, no code changes
 
 ## 0.8.0
 
