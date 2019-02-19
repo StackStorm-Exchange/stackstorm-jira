@@ -1,4 +1,5 @@
 ---
+<<: &profile_options
   url:
     description: "URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)"
     type: "string"
@@ -57,4 +58,14 @@
     description: "Project to be used as default for actions that don't require or allow a project"
     type: "string"
     secret: false
-    required: true
+    required: false
+profiles:
+  description: "Jira Connection profile."
+  type: object
+  required: false
+  properties: {}
+  additionalProperties:
+    type: object
+    additionalProperties: false
+    properties:
+      <<: *profile_options

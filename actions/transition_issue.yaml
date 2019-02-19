@@ -13,3 +13,7 @@ parameters:
     type: string
     description: ID of transition (e.g. 11, 21, etc).
     required: true
+  config_profile:
+    type: string
+    description: Select which jira config profile to use.
+    required: false

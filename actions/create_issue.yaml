@@ -26,3 +26,7 @@ parameters:
     type: object
     description: "extra fields like priority, labels, custom fields, etc"
     required: false
+  config_profile:
+    type: string
+    description: Select which jira config profile to use.
+    required: false       

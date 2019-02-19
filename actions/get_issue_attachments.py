@@ -7,7 +7,10 @@ __all__ = [
 
 
 class GetJiraIssueAttachmentsAction(BaseJiraAction):
-    def run(self, issue_key):
+    def run(self, issue_key, config_profile=None):
+
+        super(GetJiraIssueAttachmentsAction, self)._run(config_profile)
+
         issue = self._client.issue(issue_key)
 
         result = []

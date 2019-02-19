@@ -7,7 +7,10 @@ __all__ = [
 
 class AttachFileToJiraIssueAction(BaseJiraAction):
 
-    def run(self, issue_key, file_path, file_name=None):
+    def run(self, issue_key, file_path, file_name=None, config_profile=None):
+
+        super(AttachFileToJiraIssueAction, self)._run(config_profile)
+
         if not file_name:
             file_name = None
 

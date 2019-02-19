@@ -14,30 +14,34 @@ class Action(object):
 class BaseJiraAction(Action):
     def __init__(self, config):
         super(BaseJiraAction, self).__init__(config=config)
-        self._client = self._get_client()
+        self.project = ""
 
-    def _get_client(self):
-        config = self.config
+    def _run(self, profile=None):
+        self._client = self._get_client(profile)
 
-        options = {'server': config['url'], 'verify': config['verify']}
+    def _get_client(self, profile=None):
 
-        auth_method = config['auth_method']
+        profile = self._build_profile(profile)
+
+        options = {'server': profile['url'], 'verify': profile['verify']}
+
+        auth_method = profile['auth_method']
 
         if auth_method == 'oauth':
-            rsa_cert_file = config['rsa_cert_file']
+            rsa_cert_file = profile['rsa_cert_file']
             rsa_key_content = self._get_file_content(file_path=rsa_cert_file)
 
             oauth_creds = {
-                'access_token': config['oauth_token'],
-                'access_token_secret': config['oauth_secret'],
-                'consumer_key': config['consumer_key'],
+                'access_token': profile['oauth_token'],
+                'access_token_secret': profile['oauth_secret'],
+                'consumer_key': profile['consumer_key'],
                 'key_cert': rsa_key_content
             }
 
             client = JIRA(options=options, oauth=oauth_creds)
 
         elif auth_method == 'basic':
-            basic_creds = (config['username'], config['password'])
+            basic_creds = (profile['username'], profile['password'])
             client = JIRA(options=options, basic_auth=basic_creds)
 
         else:
@@ -46,6 +50,16 @@ class BaseJiraAction(Action):
             raise Exception(msg)
 
         return client
+
+    def _build_profile(self, profile_name):
+        config = self.config
+
+        profiles = config.pop('profiles', {})
+        profile = profiles.get(profile_name, {})
+        if profile.get('url', None) is None:
+            profile = config
+
+        return profile
 
     def _get_file_content(self, file_path):
         with open(file_path, 'r') as fp:

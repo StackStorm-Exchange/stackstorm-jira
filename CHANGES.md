@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.13.0
+
+- Added config profile support for actions. See profile section in readme.
+- Add new config option ``profiles`` this mimicks the jira configuration options to allow for multi jira connections.
+- Add new action option ``config_profile`` to all actions. This will tell the action to use a different config profile then the default profile.
+
 
 ## 0.12.0
 
