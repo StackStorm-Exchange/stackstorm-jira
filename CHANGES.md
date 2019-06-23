@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.12.1
+
+- Minor linting change
 
 ## 0.12.0
 
