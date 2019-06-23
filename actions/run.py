@@ -15,9 +15,9 @@ class ActionManager(BaseJiraAction):
                 kwargs['transition'] = self.transition_name_to_id(**kwargs)
                 del kwargs['transition_name']
             return (True, getattr(self._client, action)(**kwargs))
-        except JIRAError as e:
-            return (False, str(e))
-        except AttributeError as e:
+        except JIRAError as error:
+            return (False, str(error))
+        except AttributeError:
             return (False, 'Action "%s" is not implemented' % action)
 
     def transition_name_to_id(self, issue, transition_name):

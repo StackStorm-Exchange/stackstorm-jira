@@ -16,8 +16,8 @@ class SearchJiraIssuesAction(BaseJiraAction):
 
         for issue in issues:
             results.append(to_issue_dict(issue=issue,
-                           include_comments=include_comments,
-                           include_attachments=include_attachments,
-                           include_customfields=include_customfields))
+                                         include_comments=include_comments,
+                                         include_attachments=include_attachments,
+                                         include_customfields=include_customfields))
 
         return results
