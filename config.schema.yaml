@@ -58,3 +58,8 @@
     type: "string"
     secret: false
     required: true
+  validate:
+    description: "If true it will validate your credentials first."
+    type: boolean
+    default: false
+    required: false
