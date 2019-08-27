@@ -38,7 +38,8 @@ class BaseJiraAction(Action):
 
         elif auth_method == 'basic':
             basic_creds = (config['username'], config['password'])
-            client = JIRA(options=options, basic_auth=basic_creds)
+            client = JIRA(options=options, basic_auth=basic_creds,
+                          validate=config.get('validate', False))
 
         else:
             msg = ('You must set auth_method to either "oauth"',
