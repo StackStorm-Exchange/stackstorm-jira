@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.13.0
+
+- Add ``validate`` option to pack config to enable validating credentials
+  before running any actions (PR #33)
+  Special thanks to @guymatz for this contribution
+
 ## 0.12.1
 
 - Minor linting change
