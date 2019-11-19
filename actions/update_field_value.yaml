@@ -1,0 +1,27 @@
+---
+name: update_field_value
+runner_type: python-script
+description: Update a field in a particular JIRA issue.
+enabled: true
+entry_point: update_field_value.py
+parameters:
+  issue_key:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true
+  field:
+    type: string
+    description: the field name.
+    required: true
+  value:
+    type: string
+    description: the field text itself.
+    required: true
+  notify:
+    type: boolean
+    description: jira will send notifications (default is true)
+    default: true
+    required: false
+
+
+  
