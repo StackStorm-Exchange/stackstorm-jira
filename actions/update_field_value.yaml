@@ -22,6 +22,3 @@ parameters:
     description: jira will send notifications (default is true)
     default: true
     required: false
-
-
-  
