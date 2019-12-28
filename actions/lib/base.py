@@ -20,8 +20,8 @@ class BaseJiraAction(Action):
         options = {"server": config["url"], "verify": config["verify"]}
 
         # Getting client cert configuration
-        cert_file_path = config["cert_file_path"]
-        key_file_path = config["key_file_path"]
+        cert_file_path = config["client_cert_file"]
+        key_file_path = config["client_key_file"]
         if cert_file_path and key_file_path:
             options["client_cert"] = (cert_file_path, key_file_path)
 
