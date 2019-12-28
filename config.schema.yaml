@@ -1,65 +1,75 @@
 ---
-  url:
-    description: "URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)"
-    type: "string"
-    secret: false
-    required: true
-  verify:
-    description: "Verify SSL certificate. Set to False to disable verification. Default True"
-    type: boolean
-    default: True
-  auth_method:
-    description: "Authentication method to use - oauth or basic"
-    type: "string"
-    secret: false
-    required: true
-    default: "oauth"
-    enum:
-      - oauth
-      - basic
-  username:
-    description: "Username if using the basic auth_method"
-    type: "string"
-    secret: false
-    required: false
-  password:
-    description: "Password if using the basic auth_method"
-    type: "string"
-    secret: true
-    required: false
-  rsa_cert_file:
-    description: "Path to a private key file, e.g. /home/vagrant/jira.pem"
-    type: "string"
-    secret: false
-    required: false
-  oauth_token:
-    description: "OAuth token"
-    type: "string"
-    secret: true
-    required: false
-  oauth_secret:
-    description: "OAuth secret"
-    type: "string"
-    secret: true
-    required: false
-  consumer_key:
-    description: "Consumer key"
-    type: "string"
-    secret: true
-    required: false
-  poll_interval:
-    description: "Polling interval - default 30s"
-    type: "integer"
-    secret: false
-    required: false
-    default: 30
-  project:
-    description: "Project to be used as default for actions that don't require or allow a project"
-    type: "string"
-    secret: false
-    required: true
-  validate:
-    description: "If true it will validate your credentials first."
-    type: boolean
-    default: false
-    required: false
+url:
+  description: "URL of the JIRA instance (e.g. ``https://myproject.atlassian.net``)"
+  type: "string"
+  secret: false
+  required: true
+verify:
+  description: "Verify SSL certificate. Set to False to disable verification. Default True"
+  type: boolean
+  default: True
+auth_method:
+  description: "Authentication method to use - oauth or basic"
+  type: "string"
+  secret: false
+  required: true
+  default: "oauth"
+  enum:
+    - oauth
+    - basic
+username:
+  description: "Username if using the basic auth_method"
+  type: "string"
+  secret: false
+  required: false
+password:
+  description: "Password if using the basic auth_method"
+  type: "string"
+  secret: true
+  required: false
+rsa_cert_file:
+  description: "Path to a private key file, e.g. /home/vagrant/jira.pem"
+  type: "string"
+  secret: false
+  required: false
+oauth_token:
+  description: "OAuth token"
+  type: "string"
+  secret: true
+  required: false
+oauth_secret:
+  description: "OAuth secret"
+  type: "string"
+  secret: true
+  required: false
+consumer_key:
+  description: "Consumer key"
+  type: "string"
+  secret: true
+  required: false
+poll_interval:
+  description: "Polling interval - default 30s"
+  type: "integer"
+  secret: false
+  required: false
+  default: 30
+project:
+  description: "Project to be used as default for actions that don't require or allow a project"
+  type: "string"
+  secret: false
+  required: true
+validate:
+  description: "If true it will validate your credentials first."
+  type: boolean
+  default: false
+  required: false
+client_cert_file:
+  description: "Path to a client cert file, e.g. /home/jiracerts/username.cer"
+  type: "string"
+  secret: false
+  required: false
+client_key_file:
+  description: "Path to a client key file, e.g. /home/jiracerts/username.key"
+  type: "string"
+  secret: false
+  required: false
