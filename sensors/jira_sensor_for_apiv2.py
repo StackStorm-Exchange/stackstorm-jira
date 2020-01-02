@@ -64,10 +64,14 @@ class JIRASensorForAPIv2(PollingSensor):
                 "key_cert": self._rsa_key,
             }
 
-            self._jira_client = JIRA(options=options, oauth=oauth_creds)
+            self._jira_client = JIRA(
+                options=options, oauth=oauth_creds, get_server_info=False
+            )
         elif auth_method == "basic":
             basic_creds = (self._config["username"], self._config["password"])
-            self._jira_client = JIRA(options=options, basic_auth=basic_creds)
+            self._jira_client = JIRA(
+                options=options, basic_auth=basic_creds, get_server_info=False
+            )
 
         else:
             msg = (
