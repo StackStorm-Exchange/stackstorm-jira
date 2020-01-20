@@ -108,7 +108,7 @@ jobs:
           command: sudo apt -y install gmic optipng
       - run:
           name: Update exchange.stackstorm.org
-          command:  ~/ci/.circle/deployment
+          command: ~/ci/.circle/deployment
 
 workflows:
   version: 2
