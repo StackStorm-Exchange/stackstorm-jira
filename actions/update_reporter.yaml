@@ -1,0 +1,20 @@
+---
+name: update_reporter
+runner_type: python-script
+description: Update the reporter of a particular JIRA issue.
+enabled: true
+entry_point: update_reporter.py
+parameters:
+  issue_key:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true
+  username:
+    type: string
+    description: the reporter name.
+    required: true
+  notify:
+    type: boolean
+    description: jira will send notifications (default is true)
+    default: true
+    required: false
