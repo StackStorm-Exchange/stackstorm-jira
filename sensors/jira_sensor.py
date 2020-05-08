@@ -13,9 +13,9 @@ class JIRASensor(PollingSensor):
     '''
 
     def __init__(self, sensor_service, config=None, poll_interval=5):
-        super(JIRASensor, self).__init__(
-            sensor_service=sensor_service, config=config, poll_interval=poll_interval
-        )
+        super(JIRASensor, self).__init__(sensor_service=sensor_service, 
+                                        config=config, 
+                                        poll_interval=poll_interval)
 
         self._jira_url = None
         # The Consumer Key created while setting up the 'Incoming Authentication' in
