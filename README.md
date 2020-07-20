@@ -21,6 +21,11 @@ to `/opt/stackstorm/configs/jira.yaml` and edit as required.
 * ``verify`` - Verify SSL certificates. Default True. Set to False to disable verification
 * ``auth_method`` - Specify either `basic` or `oauth` authentication
 
+Include following settings for certificate based authentication with JIRA server 
+
+* ``client_cert_file`` Path to a client cert file, e.g. /home/jiracerts/username.cer
+* ``client_key_file``  Path to a client key file, e.g. /home/jiracerts/username.key
+
 Include the following settings when using the `oauth` auth_method:
 * ``rsa_cert_file`` - Path to the file with a private key
 * ``oauth_token`` - OAuth token
@@ -90,3 +95,14 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 
 * ``create_issue`` - Action which creates a new JIRA issue.
 * ``get_issue`` - Action which retrieves details for a particular issue.
+* ``add_field_value`` - Add a field to a particular JIRA issue.
+* ``add_watcher`` - Add a watcher on a JIRA issue.
+* ``attach_file_to_issue`` - Attach a file to JIRA issue / ticket.
+* ``attach_files_to_issue`` - Attach multiple files to JIRA issue / ticket.
+* ``comment_issue`` - Comment on a JIRA issue / ticket.
+* ``create_issue`` - Create a new JIRA issue / ticket.
+* ``get_issue_attachments`` - Retrieve attachments for a particular JIRA issue.
+* ``search_issues`` - Search JIRA issues with a JQL query
+* ``transition_issue`` - Do a transition on a JIRA issue / ticket.
+* ``update_field_value`` - Update a field in a particular JIRA issue.
+* ``update_reporter`` - Update the reporter of a particular JIRA issue.
