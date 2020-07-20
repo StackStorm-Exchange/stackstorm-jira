@@ -11,13 +11,14 @@ class JIRASensor(PollingSensor):
     Sensor will monitor for any new projects created in JIRA and
     emit trigger instance when one is created.
     '''
+
     def __init__(self, sensor_service, config=None, poll_interval=5):
-        super(JIRASensor, self).__init__(sensor_service=sensor_service,
-                                         config=config,
-                                         poll_interval=poll_interval)
+        super(JIRASensor, self).__init__(sensor_service=sensor_service, 
+                                        config=config, 
+                                        poll_interval=poll_interval)
 
         self._jira_url = None
-        # The Consumer Key created while setting up the "Incoming Authentication" in
+        # The Consumer Key created while setting up the 'Incoming Authentication' in
         # JIRA for the Application Link.
         self._consumer_key = u''
         self._rsa_key = None
@@ -41,29 +42,39 @@ class JIRASensor(PollingSensor):
         self._jira_url = self._config['url']
         auth_method = self._config['auth_method']
 
+        options = {'server': self._config['url'],
+                   'verify': self._config['verify']}
+        # Getting client cert configuration
+        cert_file_path = self._config['client_cert_file']
+        key_file_path = self._config['client_key_file']
+        if cert_file_path and key_file_path:
+            options['client_cert'] = (cert_file_path, key_file_path)
+
         if auth_method == 'oauth':
             rsa_cert_file = self._config['rsa_cert_file']
             if not os.path.exists(rsa_cert_file):
-                raise Exception('Cert file for JIRA OAuth not found at %s.' % rsa_cert_file)
+                raise Exception(
+                    'Cert file for JIRA OAuth not found at %s.' % rsa_cert_file
+                )
             self._rsa_key = self._read_cert(rsa_cert_file)
-            self._poll_interval = self._config.get('poll_interval', self._poll_interval)
+            self._poll_interval = self._config.get(
+                'poll_interval', self._poll_interval)
             oauth_creds = {
                 'access_token': self._config['oauth_token'],
                 'access_token_secret': self._config['oauth_secret'],
                 'consumer_key': self._config['consumer_key'],
-                'key_cert': self._rsa_key
+                'key_cert': self._rsa_key,
             }
 
-            self._jira_client = JIRA(options={'server': self._jira_url},
-                                     oauth=oauth_creds)
+            self._jira_client = JIRA(options=options, oauth=oauth_creds)
         elif auth_method == 'basic':
             basic_creds = (self._config['username'], self._config['password'])
-            self._jira_client = JIRA(options={'server': self._jira_url},
-                                     basic_auth=basic_creds)
+            self._jira_client = JIRA(options=options, basic_auth=basic_creds)
 
         else:
             msg = ('You must set auth_method to either "oauth"',
-                   'or "basic" your jira.yaml config file.')
+                   'or "basic" your jira.yaml config file.',
+                   )
             raise Exception(msg)
 
         if self._projects_available is None:
@@ -74,7 +85,8 @@ class JIRASensor(PollingSensor):
         if not self._project or self._project not in self._projects_available:
             raise Exception('Invalid project (%s) to track.' % self._project)
         self._jql_query = 'project=%s' % self._project
-        all_issues = self._jira_client.search_issues(self._jql_query, maxResults=None)
+        all_issues = self._jira_client.search_issues(
+            self._jql_query, maxResults=None)
         self._issues_in_project = {issue.key: issue for issue in all_issues}
 
     def poll(self):
@@ -93,7 +105,9 @@ class JIRASensor(PollingSensor):
         pass
 
     def _detect_new_issues(self):
-        new_issues = self._jira_client.search_issues(self._jql_query, maxResults=50, startAt=0)
+        new_issues = self._jira_client.search_issues(
+            self._jql_query, maxResults=50, startAt=0
+        )
 
         for issue in new_issues:
             if issue.key not in self._issues_in_project:

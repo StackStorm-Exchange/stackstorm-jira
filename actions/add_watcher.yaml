@@ -1,0 +1,15 @@
+---
+name: add_watcher
+runner_type: python-script
+description: Add a watcher on a JIRA issue / ticket.
+enabled: true
+entry_point: add_watcher.py
+parameters:
+  username:
+    type: string
+    description: User to add as a watcher.
+    required: true
+  issue_key:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true

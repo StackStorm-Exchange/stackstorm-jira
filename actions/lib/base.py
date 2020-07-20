@@ -1,9 +1,7 @@
 from jira import JIRA
 
 #  from st2common.runners.base_action import Action
-__all__ = [
-    'BaseJiraAction'
-]
+__all__ = ['BaseJiraAction']
 
 
 class Action(object):
@@ -21,6 +19,12 @@ class BaseJiraAction(Action):
 
         options = {'server': config['url'], 'verify': config['verify']}
 
+        # Getting client cert configuration
+        cert_file_path = config['client_cert_file']
+        key_file_path = config['client_key_file']
+        if cert_file_path and key_file_path:
+            options['client_cert'] = (cert_file_path, key_file_path)
+
         auth_method = config['auth_method']
 
         if auth_method == 'oauth':
@@ -31,19 +35,24 @@ class BaseJiraAction(Action):
                 'access_token': config['oauth_token'],
                 'access_token_secret': config['oauth_secret'],
                 'consumer_key': config['consumer_key'],
-                'key_cert': rsa_key_content
+                'key_cert': rsa_key_content,
             }
 
             client = JIRA(options=options, oauth=oauth_creds)
 
         elif auth_method == 'basic':
             basic_creds = (config['username'], config['password'])
-            client = JIRA(options=options, basic_auth=basic_creds,
-                          validate=config.get('validate', False))
+            client = JIRA(
+                options=options,
+                basic_auth=basic_creds,
+                validate=config.get('validate', False),
+            )
 
         else:
-            msg = ('You must set auth_method to either "oauth"',
-                   'or "basic" your jira.yaml config file.')
+            msg = (
+                "You must set auth_method to either 'oauth'",
+                "or 'basic' your jira.yaml config file.",
+            )
             raise Exception(msg)
 
         return client

@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.14.0
+
+- Add `add_watcher` and `update_reporter` action
+- Add `client_cert_file` and `client_key_file` for certificate based authentication with JIRA server
+
 ## 0.13.0
 
 - Add ``validate`` option to pack config to enable validating credentials

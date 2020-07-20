@@ -63,3 +63,13 @@
     type: boolean
     default: false
     required: false
+  client_cert_file:
+    description: "Path to a client cert file, e.g. /home/jiracerts/username.cer"
+    type: "string"
+    secret: false
+    required: false
+  client_key_file:
+    description: "Path to a client key file, e.g. /home/jiracerts/username.key"
+    type: "string"
+    secret: false
+    required: false

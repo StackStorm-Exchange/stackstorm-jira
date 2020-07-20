@@ -6,4 +6,5 @@
   poll_interval: 30
   project: "MY_PROJECT"
   verify: True
-
+  client_cert_file: ""
+  client_key_file: ""
