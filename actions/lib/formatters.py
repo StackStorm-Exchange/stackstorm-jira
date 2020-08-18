@@ -4,8 +4,7 @@ __all__ = [
 ]
 
 
-def to_issue_dict(issue, include_comments=False, include_attachments=False,
-                  include_customfields=False):
+def to_issue_dict(issue, include_comments=False, include_attachments=False, include_customfields=False, include_components=False, include_subtasks=False):
     """
     :rtype: ``dict``
     """
@@ -64,6 +63,20 @@ def to_issue_dict(issue, include_comments=False, include_attachments=False,
             item = to_attachment_dict(attachment)
             result['attachments'].append(item)
 
+    if include_components:
+        result['components'] = []
+
+        for component in issue.fields.components:
+            item = to_component_dict(component)
+            result['components'].append(item)
+
+    if include_subtasks:
+        result['subtasks'] = []
+
+        for subtask in issue.fields.subtasks:
+            item = to_subtask_dict(subtask)
+            result['subtasks'].append(item)
+
     return result
 
 
@@ -77,6 +90,26 @@ def to_comment_dict(comment):
     }
     return result
 
+def to_component_dict(component):
+    """
+    :rtype: ``dict``
+    """
+    result = {
+        'id': component.id,
+        'name': component.name
+    }
+    return result
+
+def to_subtask_dict(subtask):
+    """
+    :rtype: ``dict``
+    """
+    result = {
+        'id': subtask.id,
+        'key': subtask.key,
+	'summary': subtask.fields.summary
+    }
+    return result
 
 def to_attachment_dict(attachment):
     """
