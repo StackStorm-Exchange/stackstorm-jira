@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.13.1
+
+- Remove cryptography, pyjwt, pyyaml requirements since we don't use them (PR #41)
+
 ## 0.13.0
 
 - Add ``validate`` option to pack config to enable validating credentials
