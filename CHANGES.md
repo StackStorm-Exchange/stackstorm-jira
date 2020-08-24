@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.14.0
+
+- Support cookie-based authentication (PR #42)
+
 ## 0.13.0
 
 - Add ``validate`` option to pack config to enable validating credentials
