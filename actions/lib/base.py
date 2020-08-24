@@ -41,9 +41,13 @@ class BaseJiraAction(Action):
             client = JIRA(options=options, basic_auth=basic_creds,
                           validate=config.get('validate', False))
 
+        elif auth_method == 'cookie':
+            basic_creds = (config['username'], config['password'])
+            client = JIRA(options=options, auth=basic_creds)
+
         else:
-            msg = ('You must set auth_method to either "oauth"',
-                   'or "basic" your jira.yaml config file.')
+            msg = ('You must set auth_method to either "oauth", ',
+                   '"basic", or "cookie" in your Jira pack config file.')
             raise Exception(msg)
 
         return client
