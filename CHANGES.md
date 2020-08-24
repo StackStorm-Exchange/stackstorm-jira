@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.14.0
+
+- Support cookie-based authentication (PR #42)
+
 ## 0.13.1
 
 - Remove cryptography, pyjwt, pyyaml requirements since we don't use them (PR #41)
