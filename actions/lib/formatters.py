@@ -64,18 +64,10 @@ def to_issue_dict(issue, include_comments=False, include_attachments=False, incl
             result['attachments'].append(item)
 
     if include_components:
-        result['components'] = []
-
-        for component in issue.fields.components:
-            item = to_component_dict(component)
-            result['components'].append(item)
+        result['components'] = [to_component_dict(c) for c in issue.fields.components]
 
     if include_subtasks:
-        result['subtasks'] = []
-
-        for subtask in issue.fields.subtasks:
-            item = to_subtask_dict(subtask)
-            result['subtasks'].append(item)
+        result['subtasks'] = [to_subtask_dict(s) for s in issue.fields.subtasks]
 
     return result
 
@@ -90,6 +82,7 @@ def to_comment_dict(comment):
     }
     return result
 
+
 def to_component_dict(component):
     """
     :rtype: ``dict``
@@ -100,6 +93,7 @@ def to_component_dict(component):
     }
     return result
 
+
 def to_subtask_dict(subtask):
     """
     :rtype: ``dict``
@@ -107,9 +101,10 @@ def to_subtask_dict(subtask):
     result = {
         'id': subtask.id,
         'key': subtask.key,
-	'summary': subtask.fields.summary
+        'summary': subtask.fields.summary
     }
     return result
+
 
 def to_attachment_dict(attachment):
     """

@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.14.0
+
+- Add new ``jira.get_issue_components`` action
+- Add new ``jira.get_issue_subtasks`` action
+
 ## 0.13.0
 
 - Add ``validate`` option to pack config to enable validating credentials
