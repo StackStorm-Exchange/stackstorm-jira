@@ -4,7 +4,8 @@ __all__ = [
 ]
 
 
-def to_issue_dict(issue, include_comments=False, include_attachments=False, include_customfields=False, include_components=False, include_subtasks=False):
+def to_issue_dict(issue, include_comments=False, include_attachments=False, 
+                  include_customfields=False, include_components=False, include_subtasks=False):
     """
     :rtype: ``dict``
     """
