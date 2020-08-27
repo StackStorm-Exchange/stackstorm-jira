@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.15.0
+
+- Add new action `link_issue`.  This allows linking issues together
+
 ## 0.14.0
 
 - Support cookie-based authentication (PR #42)
