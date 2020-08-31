@@ -34,4 +34,3 @@ parameters:
     description: True to include custom fields.
     required: true
     default: false
-
