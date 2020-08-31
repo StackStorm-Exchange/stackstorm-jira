@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.16.0
+
+- Add new ``jira.get_issue_components`` action
+- Add new ``jira.get_issue_subtasks`` action
+
 ## 0.15.0
 
 - Add new action `link_issue`.  This allows linking issues together
