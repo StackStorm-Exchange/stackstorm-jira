@@ -6,7 +6,11 @@ keywords:
   - issues
   - ticket management
   - project management
+<<<<<<< HEAD
 version: 0.16.0
+=======
+version: 0.15.0
+>>>>>>> f493c5aa0b491aecf1138dec1f40785aeb4aa4d6
 python_versions:
   - "2"
   - "3"

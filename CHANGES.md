@@ -1,9 +1,22 @@
 # Change Log
 
-## 0.14.0
+## 0.16.0
 
 - Add new ``jira.get_issue_components`` action
 - Add new ``jira.get_issue_subtasks`` action
+
+## 0.15.0
+
+- Add new action `link_issue`.  This allows linking issues together
+
+## 0.14.0
+
+- Support cookie-based authentication (PR #42)
+
+## 0.13.1
+
+- Remove cryptography, pyjwt, pyyaml requirements since we don't use them (PR #41)
+>>>>>>> f493c5aa0b491aecf1138dec1f40785aeb4aa4d6
 
 ## 0.13.0
 

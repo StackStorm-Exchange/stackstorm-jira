@@ -17,13 +17,14 @@
     enum:
       - oauth
       - basic
+      - cookie
   username:
-    description: "Username if using the basic auth_method"
+    description: "Username if using the basic or cookie auth_method"
     type: "string"
     secret: false
     required: false
   password:
-    description: "Password if using the basic auth_method"
+    description: "Password if using the basic or cookie auth_method"
     type: "string"
     secret: true
     required: false
