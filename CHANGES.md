@@ -16,7 +16,6 @@
 ## 0.13.1
 
 - Remove cryptography, pyjwt, pyyaml requirements since we don't use them (PR #41)
->>>>>>> f493c5aa0b491aecf1138dec1f40785aeb4aa4d6
 
 ## 0.13.0
 
