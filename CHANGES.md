@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.0
+
+* Drop Python 2.7 support
+
 ## 0.16.0
 
 - Add new ``jira.get_issue_components`` action

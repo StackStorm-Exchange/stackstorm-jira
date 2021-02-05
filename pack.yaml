@@ -6,9 +6,8 @@ keywords:
   - issues
   - ticket management
   - project management
-version: 0.16.0
+version: 1.0.0
 python_versions:
-  - "2"
   - "3"
 author : StackStorm, Inc.
 email : info@stackstorm.com
