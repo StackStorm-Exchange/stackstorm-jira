@@ -27,7 +27,7 @@ class JIRASensorForAPIv2(PollingSensor):
         self._projects_available = None
         self._poll_interval = 30
         self._project = None
-        self._issues_in_project = None
+        self._latest_id = None
         self._jql_query = None
         self._trigger_name = 'issues_tracker_for_apiv2'
         self._trigger_pack = 'jira'
@@ -73,9 +73,12 @@ class JIRASensorForAPIv2(PollingSensor):
         self._project = self._config.get('project', None)
         if not self._project or self._project not in self._projects_available:
             raise Exception('Invalid project (%s) to track.' % self._project)
-        self._jql_query = 'project=%s' % self._project
-        all_issues = self._jira_client.search_issues(self._jql_query, maxResults=None)
-        self._issues_in_project = {issue.key: issue for issue in all_issues}
+
+        self._jql_query = 'project={} ORDER BY id DESC'.format(self._project)
+        latest_issue = self._jira_client.search_issues(self._jql_query, maxResults=1)
+        if latest_issue:
+            self._latest_id = int(latest_issue[0].id)
+        self._update_jql(self._latest_id)
 
     def poll(self):
         self._detect_new_issues()
@@ -92,13 +95,18 @@ class JIRASensorForAPIv2(PollingSensor):
     def remove_trigger(self, trigger):
         pass
 
+    def _update_jql(self, latest_id=None):
+        jql = 'project={}'.format(self._project)
+        if latest_id:
+            jql = '{} AND id > {}'.format(jql, latest_id)
+        self._jql_query = '{} ORDER BY id ASC'.format(jql)
+
     def _detect_new_issues(self):
         new_issues = self._jira_client.search_issues(self._jql_query, maxResults=50, startAt=0)
-
         for issue in new_issues:
-            if issue.key not in self._issues_in_project:
-                self._dispatch_issues_trigger(issue)
-                self._issues_in_project[issue.key] = issue
+            self._latest_id = int(issue.id)
+            self._dispatch_issues_trigger(issue)
+        self._update_jql(self._latest_id)
 
     def _dispatch_issues_trigger(self, issue):
         trigger = self._trigger_ref

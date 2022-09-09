@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.2.0
+
+- Adjust jql in sensor to better support large JIRA projects
+- Detect new issues by id vs comparing to an in-memory list
+
 ## 2.1.0
 
 - Add new ``jira.bulk_link_issues`` action (PR #50)
