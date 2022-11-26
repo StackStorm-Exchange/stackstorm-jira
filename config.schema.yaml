@@ -9,7 +9,7 @@
     type: boolean
     default: True
   auth_method:
-    description: "Authentication method to use - oauth or basic"
+    description: "Authentication method to use - oauth, basic or pat"
     type: "string"
     secret: false
     required: true
@@ -17,6 +17,7 @@
     enum:
       - oauth
       - basic
+      - pat
       - cookie
   username:
     description: "Username if using the basic or cookie auth_method"
@@ -25,6 +26,11 @@
     required: false
   password:
     description: "Password if using the basic or cookie auth_method"
+    type: "string"
+    secret: true
+    required: false
+  token:
+    description: "PAT token"
     type: "string"
     secret: true
     required: false
