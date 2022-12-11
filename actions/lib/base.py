@@ -46,7 +46,6 @@ class BaseJiraAction(Action):
             headers["Authorization"] = f"Bearer {config['token']}"
             client = JIRA(server=config['url'], options={"headers": headers})
 
-
         elif auth_method == 'cookie':
             basic_creds = (config['username'], config['password'])
             client = JIRA(options=options, auth=basic_creds)
