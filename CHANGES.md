@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.0
+
+- Add PAT-based authentication (PR #47)
+
 ## 1.0.0
 
 * Drop Python 2.7 support

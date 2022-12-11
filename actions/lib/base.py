@@ -41,6 +41,12 @@ class BaseJiraAction(Action):
             client = JIRA(options=options, basic_auth=basic_creds,
                           validate=config.get('validate', False))
 
+        elif auth_method == 'pat':
+            headers = JIRA.DEFAULT_OPTIONS["headers"].copy()
+            headers["Authorization"] = f"Bearer {config['token']}"
+            client = JIRA(server=config['url'], options={"headers": headers})
+
+
         elif auth_method == 'cookie':
             basic_creds = (config['username'], config['password'])
             client = JIRA(options=options, auth=basic_creds)
