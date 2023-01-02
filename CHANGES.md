@@ -2,7 +2,7 @@
 
 ## 2.0.0
 
-- [#48](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/48) Update `jira==3.4.1`
+- [#48](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/48) Update `jira==3.2.0`
 
 ## 1.1.0
 
