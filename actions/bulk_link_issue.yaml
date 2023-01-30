@@ -6,20 +6,21 @@ enabled: true
 entry_point: bulk_link_issue.py
 parameters:
   issue_key_list:
-    required: true
     type: array
+    description: List of tickets to link to/from the target issue.
+    required: true
   target_issue:
     type: string
-    description: Target issue to link the list of tickets to/from
+    description: Target issue to link the list of tickets to/from.
     required: true
   direction:
-    description: Direction for link relation. Outward links 1:many (one ticket relates to many children). Inward links many:1 (many tickets relate to one child).
-    default: outward
     type: string
+    description: Direction for link relation. Outward links 1:many (one ticket relates to many children). Inward links many:1 (many tickets relate to one child).
     enum:
     - outward
     - inward
     required: true
+    default: outward
   link_type:
     type: string
     description: The type of link to create.
