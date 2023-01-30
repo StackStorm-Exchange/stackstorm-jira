@@ -2,7 +2,7 @@
 
 ## 2.1.0
 
-- Add new ``jira.bulk_link_issues`` action
+- Add new ``jira.bulk_link_issues`` action (PR #50)
 
 ## 2.0.0
 
