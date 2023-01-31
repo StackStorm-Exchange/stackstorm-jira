@@ -1,0 +1,28 @@
+---
+name: bulk_link_issue
+runner_type: python-script
+description: "Receives a list of Jiras ticket issue keys and a target Jira ticket, lazy link the list of Jira tickets to the parent"
+enabled: true
+entry_point: bulk_link_issue.py
+parameters:
+  issue_key_list:
+    type: array
+    description: List of tickets to link to/from the target issue.
+    required: true
+  target_issue:
+    type: string
+    description: Target issue to link the list of tickets to/from.
+    required: true
+  direction:
+    type: string
+    description: Direction for link relation. Outward links 1:many (one ticket relates to many children). Inward links many:1 (many tickets relate to one child).
+    enum:
+    - outward
+    - inward
+    required: true
+    default: outward
+  link_type:
+    type: string
+    description: The type of link to create.
+    required: true
+    default: relates

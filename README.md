@@ -114,6 +114,7 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 * ``assign_issue`` - Assigning an issue to a user.
 * ``attach_file_to_issue`` - Attach a file to JIRA issue / ticket.
 * ``attach_files_to_issue`` - Attach multiple files to JIRA issue / ticket.
+* ``bulk_link_issue`` - Link many JIRA issues to another JIRA issue.
 * ``comment_issue`` - Comment on a JIRA issue / ticket.
 * ``create_issue`` - Create a new JIRA issue / ticket.
 * ``get_issue`` - Retrieve information about a particular JIRA issue.
