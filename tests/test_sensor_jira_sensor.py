@@ -24,6 +24,7 @@ MOCK_TRIGGER = {
 }
 
 MOCK_ISSUE_RAW = {
+    "id": '1',
     "fields": {
         "created": MOCK_PAYLOAD["created"],
         "assignee": MOCK_PAYLOAD["assignee"],
@@ -52,6 +53,7 @@ class JIRASensorTestCase(BaseSensorTestCase):
         issue = mock.Mock()
         issue.raw = MOCK_ISSUE_RAW
 
+        issue.id = MOCK_ISSUE_RAW["id"]
         issue.key = MOCK_PAYLOAD["issue_name"]
         issue.self = MOCK_PAYLOAD["issue_url"]
         sensor._project = MOCK_PAYLOAD["project"]
