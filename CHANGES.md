@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.1
+
+- Add @floatingstatic as pack maintainer
+
 ## 2.2.0
 
 - Adjust jql in sensor to better support large JIRA projects
