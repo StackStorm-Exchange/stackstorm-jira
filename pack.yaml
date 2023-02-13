@@ -6,7 +6,7 @@ keywords:
   - issues
   - ticket management
   - project management
-version: 2.2.1
+version: 2.2.0
 python_versions:
   - "3"
 author : StackStorm, Inc.
