@@ -125,3 +125,7 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 * ``transition_issue`` - Do a transition on a JIRA issue / ticket.
 * ``transition_issue_by_name`` - Do a transition on a JIRA issue / ticket.
 * ``update_field_value`` - Update a field in a particular JIRA issue.
+
+## Maintainers
+Active pack maintainers with review & write repository access and expertise with JIRA:
+* Jeremiah Millay ([@floatingstatic](https://github.com/floatingstatic)), Fastly
