@@ -50,7 +50,7 @@ class BaseJiraAction(Action):
         elif auth_method == 'cookie':
             basic_creds = (config['username'], config['password'])
             client = JIRA(options=options, auth=basic_creds)
-        
+
         elif auth_method == 'api_token':
             headers = JIRA.DEFAULT_OPTIONS["headers"].copy()
             b64_header = base64.b64encode(f"{config['username']}:{config['token']}".encode())
