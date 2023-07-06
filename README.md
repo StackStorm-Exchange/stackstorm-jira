@@ -40,6 +40,11 @@ Include the following settings when using the `PAT` auth_method:
 
 * ``token`` - PAT token
 
+Include the following settings when using the `api_token` auth_method:
+
+* ``token`` - api token
+* ``username`` - Username
+
 If using the `oauth` auth_method, take a look at the OAuth section below for further setup instructions.
 
 You can also use dynamic values from the datastore. See the

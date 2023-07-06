@@ -19,8 +19,9 @@
       - basic
       - pat
       - cookie
+      - api_token
   username:
-    description: "Username if using the basic or cookie auth_method"
+    description: "Username if using the basic, api_token, or cookie auth_method"
     type: "string"
     secret: false
     required: false
@@ -30,7 +31,7 @@
     secret: true
     required: false
   token:
-    description: "PAT token"
+    description: "PAT or API token"
     type: "string"
     secret: true
     required: false

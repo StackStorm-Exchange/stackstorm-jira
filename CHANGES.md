@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.0
+
+- Add new `api_token` auth method.  This authentication method is different than a `pat` authentication request
+
 ## 2.2.0
 
 - Adjust jql in sensor to better support large JIRA projects

@@ -1,4 +1,5 @@
 from jira import JIRA
+import base64
 
 #  from st2common.runners.base_action import Action
 __all__ = [
@@ -49,10 +50,16 @@ class BaseJiraAction(Action):
         elif auth_method == 'cookie':
             basic_creds = (config['username'], config['password'])
             client = JIRA(options=options, auth=basic_creds)
+        
+        elif auth_method == 'api_token':
+            headers = JIRA.DEFAULT_OPTIONS["headers"].copy()
+            b64_header = base64.b64encode(f"{config['username']}:{config['token']}".encode())
+            headers["Authorization"] = f"Basic {b64_header.decode()}"
+            client = JIRA(server=config['url'], options={"headers": headers})
 
         else:
             msg = ('You must set auth_method to either "oauth", ',
-                   '"basic", or "cookie" in your Jira pack config file.')
+                   '"basic", "pat", "api_token", or "cookie" in your Jira pack config file.')
             raise Exception(msg)
 
         return client
