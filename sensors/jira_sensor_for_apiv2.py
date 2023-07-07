@@ -1,5 +1,6 @@
 # See ./requirements.txt for requirements.
 import os
+import base64
 
 from jira.client import JIRA
 
@@ -61,9 +62,24 @@ class JIRASensorForAPIv2(PollingSensor):
             self._jira_client = JIRA(options={'server': self._jira_url},
                                      basic_auth=basic_creds)
 
+        elif auth_method == 'pat':
+            headers = JIRA.DEFAULT_OPTIONS["headers"].copy()
+            headers["Authorization"] = f"Bearer {self._config['token']}"
+            self._jira_client = JIRA(server=self._jira_url, options={"headers": headers})
+
+        elif auth_method == 'cookie':
+            basic_creds = (self._config['username'], self._config['password'])
+            self._jira_client = JIRA(server=self._jira_url, auth=basic_creds)
+
+        elif auth_method == 'api_token':
+            headers = JIRA.DEFAULT_OPTIONS["headers"].copy()
+            b64_header = base64.b64encode(f"{self._config['username']}:{self._config['token']}".encode())
+            headers["Authorization"] = f"Basic {b64_header.decode()}"
+            self._jira_client = JIRA(server=self._jira_url, options={"headers": headers})
+
         else:
-            msg = ('You must set auth_method to either "oauth"',
-                   'or "basic" your jira.yaml config file.')
+            msg = ('You must set auth_method to either "oauth", ',
+                   '"basic", "pat", "api_token", or "cookie" in your Jira pack config file.')
             raise Exception(msg)
 
         if self._projects_available is None:

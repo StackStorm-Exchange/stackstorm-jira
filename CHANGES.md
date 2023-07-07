@@ -2,7 +2,8 @@
 
 ## 2.3.0
 
-- Add new `api_token` auth method.  This authentication method is different than a `pat` authentication request
+- Add new `api_token` auth method.  This authentication method is different than a `pat` authentication request. (PR #54)
+- Added `pat` and `cookie` auth methods to the sensors.
 
 ## 2.2.0
 
