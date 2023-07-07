@@ -73,7 +73,8 @@ class JIRASensorForAPIv2(PollingSensor):
 
         elif auth_method == 'api_token':
             headers = JIRA.DEFAULT_OPTIONS["headers"].copy()
-            b64_header = base64.b64encode(f"{self._config['username']}:{self._config['token']}".encode())
+            b64_header = base64.b64encode(f"{self._config['username']}:{self._config['token']}"
+                                          .encode())
             headers["Authorization"] = f"Basic {b64_header.decode()}"
             self._jira_client = JIRA(server=self._jira_url, options={"headers": headers})
 
