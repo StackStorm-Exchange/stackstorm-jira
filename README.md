@@ -22,7 +22,7 @@ to `/opt/stackstorm/configs/jira.yaml` and edit as required.
 * ``project`` - Key of the project which will be used as a default with some of the actions which
   don't require or allow you to specify a project (e.g. ``STORM``).
 * ``verify`` - Verify SSL certificates. Default True. Set to False to disable verification
-* ``auth_method`` - Specify either `basic`, `oauth` or `PAT` authentication
+* ``auth_method`` - Specify either `basic`, `oauth`, `api_token` or `PAT` authentication
 
 Include the following settings when using the `oauth` auth_method:
 
