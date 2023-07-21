@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.1
+
+- Update `README.md` to include `api_token` as an auth method
+
 ## 2.3.0
 
 - Add new `api_token` auth method.  This authentication method is different than a `pat` authentication request. (PR #54)
