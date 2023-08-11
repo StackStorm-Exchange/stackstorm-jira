@@ -1,5 +1,17 @@
 # Change Log
 
+## 2.4.0
+
+- `add_field_value` and `update_field_value` actions now return a dictionary representation of the issue being modified. Previously these actions would return
+only the `labels` field if it exists as an attribute. This addresses [#53](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/53) but is also beneficial for displaying other field values (inclusive of `labels`) that may have been updated.
+
+- Fix for [#54](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/54) which prevents callers of the `update_field_value` action from updating `labels` which must be passed as a list via the api. As labels cannot contain spaces we split
+the `value` field of this action on whitespace in the case where `field` == `"labels"`. Example invocation:
+
+```
+st2 action execute jira.update_field_value issue_key=NETOPS-1 field=labels value='Label1 Label2'
+```
+
 ## 2.3.1
 
 - Update `README.md` to include `api_token` as an auth method
