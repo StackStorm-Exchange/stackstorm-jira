@@ -34,3 +34,13 @@ parameters:
     description: True to include custom fields.
     required: true
     default: false
+  include_components:
+    type: boolean
+    description: True to include issue components.
+    required: true
+    default: false
+  include_subtasks:
+    type: boolean
+    description: True to include issue subtasks.
+    required: true
+    default: false
