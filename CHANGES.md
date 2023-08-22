@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.1
+
+- Update `search_issue` to include `include_components` and `include_subtasks` as flags
+
 ## 2.4.0
 
 - `add_field_value` and `update_field_value` actions now return a dictionary representation of the issue being modified. Previously these actions would return
