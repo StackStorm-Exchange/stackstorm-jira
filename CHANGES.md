@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.2
+
+- Update `formatters.py` to include `priority` field
+  
 ## 2.4.1
 
 - Update `search_issue` to include `include_components` and `include_subtasks` as flags
