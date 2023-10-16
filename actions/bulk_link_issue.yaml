@@ -25,4 +25,4 @@ parameters:
     type: string
     description: The type of link to create.
     required: true
-    default: relates
+    default: relates to

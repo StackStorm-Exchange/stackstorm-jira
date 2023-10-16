@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.3
+
+- Added multithreading in linking multiple issue functionality to speed up the response.
+
 ## 2.4.2
 
 - Update `formatters.py` to include `priority` field
