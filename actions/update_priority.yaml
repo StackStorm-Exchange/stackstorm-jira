@@ -9,7 +9,7 @@ parameters:
     type: string
     description: Issue key (e.g. PROJECT-1000).
     required: true
-  priority:
+  new_priority:
     type: object
     description: New priority object (e.g { 'name':'High'} or { 'id':'2'} ).
     required: true
