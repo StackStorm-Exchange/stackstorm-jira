@@ -2,9 +2,8 @@ from lib.base import BaseJiraAction
 from lib.formatters import to_issue_dict
 
 __all__ = [
-    'UpdateFieldValue'
+    'UpdatePriority'
 ]
-
 
 class UpdatePriority(BaseJiraAction):
     def run(self, issue_key, new_priority, notify):
