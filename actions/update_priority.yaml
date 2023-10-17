@@ -1,0 +1,15 @@
+---
+name: update_priority
+runner_type: python-script
+description: Update the priority or a JIRA issue.
+enabled: true
+entry_point: update_priority.py
+parameters:
+  issue_key:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true
+  priority:
+    type: object
+    description: New priority object (e.g { 'name':'High'} or { 'id':'2'} ).
+    required: true
