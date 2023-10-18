@@ -13,3 +13,8 @@ parameters:
     type: object
     description: New priority object (e.g { 'name':'High'} or { 'id':'2'} ).
     required: true
+  notify:
+    type: boolean
+    description: jira will send notifications (default is true)
+    default: true
+    required: false
