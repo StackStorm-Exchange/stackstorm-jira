@@ -5,6 +5,7 @@ __all__ = [
     'UpdatePriority'
 ]
 
+
 class UpdatePriority(BaseJiraAction):
     def run(self, issue_key, new_priority, notify):
         issue = self._client.issue(issue_key)
