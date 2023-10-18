@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.3
+
+- Add `update_priority` action for changing an issue's priority
+  
 ## 2.4.2
 
 - Update `formatters.py` to include `priority` field
