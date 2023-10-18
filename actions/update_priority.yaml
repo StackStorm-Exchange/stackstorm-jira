@@ -11,7 +11,7 @@ parameters:
     required: true
   new_priority:
     type: object
-    description: New priority object (e.g { 'name':'High'} or { 'id':'2'} ).
+    description: New priority object (e.g { "name":"High"} or { "id":"2"} ).
     required: true
   notify:
     type: boolean
