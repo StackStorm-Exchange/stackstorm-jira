@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.4.3
+## 2.5.0
 
 - Added multithreading in linking multiple issue functionality to speed up the response.
 
