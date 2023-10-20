@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.4.3
+
+- Improve handling of `priority` field in update_field_value action to address [#65]
+
 ## 2.4.2
 
 - Update `formatters.py` to include `priority` field
