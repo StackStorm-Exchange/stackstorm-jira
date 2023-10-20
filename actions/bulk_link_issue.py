@@ -13,6 +13,8 @@ class BulkLinkJiraIssueAction(BaseJiraAction):
         link_type=None,
     ):
         with semaphore:
+            outward_issue_key = ""
+            inward_issue_key = ""
             if direction == "outward":
                 outward_issue_key = issue_key
                 inward_issue_key = target_issue
@@ -26,7 +28,7 @@ class BulkLinkJiraIssueAction(BaseJiraAction):
                 response = self._client.create_issue_link(
                     link_type, inward_issue_key, outward_issue_key
                 )
-            response_output = {"issue": target_issue, "response": response}
+            response_output = {"inward_issue": inward_issue_key, "outward_issue": outward_issue_key, "response": response}
         print(response_output)
 
     def run(self, issue_key_list, target_issue, direction, link_type):
