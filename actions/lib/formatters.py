@@ -119,3 +119,14 @@ def to_attachment_dict(attachment):
         'content': attachment.content,
     }
     return result
+
+
+def fmt_field_value(field, value):
+    """
+    Returns specific field values in formats required by JIRA
+    """
+    if field == "priority":
+        value = {"name": value}
+    if field == "labels":
+        value = value.split()
+    return value

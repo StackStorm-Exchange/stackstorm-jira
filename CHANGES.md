@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.5.1
+
+- Improve handling of `priority` field in update_field_value action to address [#65]
+
 ## 2.5.0
 
 - Added multithreading in linking multiple issue functionality to speed up the response.
