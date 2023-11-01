@@ -71,7 +71,7 @@ def to_issue_dict(issue, include_comments=False, include_attachments=False,
 
     if include_subtasks:
         result['subtasks'] = [to_subtask_dict(s) for s in issue.fields.subtasks]
-    
+
     if include_links:
         result['links'] = [to_links_dict(i) for i in issue.fields.issuelinks]
 
@@ -124,6 +124,7 @@ def to_attachment_dict(attachment):
     }
     return result
 
+
 def to_links_dict(issue):
     """
     :rtype: ``dict``
@@ -139,6 +140,7 @@ def to_links_dict(issue):
         else issue.raw.get('type').get('inward'),
     }
     return result
+
 
 def fmt_field_value(field, value):
     """
