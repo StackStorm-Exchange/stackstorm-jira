@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.6.0
+
+- Add new ``jira.get_issue_links`` action 
+
+- Evaluate if an issue has a priority set before attempting to get the priority
+
 ## 2.5.1
 
 - Improve handling of `priority` field in update_field_value action to address [#65]
