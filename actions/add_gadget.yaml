@@ -1,0 +1,53 @@
+---
+name: add_gadget
+runner_type: python-script
+description: Add a gadget to a dashboard.
+enabled: true
+entry_point: add_gadget.py
+parameters:
+  dashboard_id:
+    type: string
+    description: The ID of the Dashboard to add the gadget to.
+    required: true
+  color:
+    type: string
+    description: The color of the gadget.
+    default: blue
+    enum:
+      - blue
+      - red
+      - yellow
+      - green
+      - cyan
+      - purple
+      - gray
+      - white
+    required: false
+  ignore_uri_and_module_key_validation:
+    type: boolean
+    description: |
+      Whether to ignore the validation of the module key and URI.
+      For example, when a gadget is created that is part of an
+      application that is not installed.
+    default: false
+    required: false
+  module_key:
+    type: string
+    description: |
+      The module to use in the gadget. Mutually exclusive with `uri`.
+    required: false
+  position:
+    type: object
+    description: |
+      A dictionary (object) containing positioning information for the
+      gadget like - {"column": 0, "row": 0}
+    required: false
+  title:
+    type: string
+    description: The title of the gadget.
+    required: false
+  uri:
+    type: string
+    description: |
+      The uri to the module to use in the gadget. Mutually exclusive
+      with `uri`.
