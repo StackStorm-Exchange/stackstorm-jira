@@ -1,0 +1,25 @@
+---
+name: create_dashboard
+runner_type: python-script
+description: Create a new JIRA dashboard.
+enabled: true
+entry_point: create_dashboard.py
+parameters:
+  name:
+    type: string
+    description: The name of the new dashboard.
+    required: true
+  description:
+    type: string
+    description: A description of the dashboard.
+    required: false
+  edit_permissions:
+    type: array
+    items:
+      type: object
+    required: false
+  share_permissions:
+    type: array
+    items:
+      type: object
+    required: false
