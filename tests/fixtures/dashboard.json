@@ -1,0 +1,13 @@
+{
+    "description": "This Board is a Test Board",
+    "id": "11117",
+    "isFavourite": true,
+    "name": "Test Board",
+    "popularity": 0,
+    "self": "https://some.atlassian.net/rest/api/2/dashboard/11117",
+    "sharePermissions": [ ],
+    "editPermissions": [ ],
+    "view": "/jira/dashboards/11117",
+    "isWritable": true,
+    "systemDashboard": false
+}

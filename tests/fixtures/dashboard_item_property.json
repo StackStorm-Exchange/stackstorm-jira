@@ -1,0 +1,11 @@
+{
+    "key": "config",
+    "value": {
+        "filterId": "16416",
+        "isConfigured": "true",
+        "columnNames": "issuetype|issuekey|summary|priority|status",
+        "isPopup": "false",
+        "num": "5",
+        "refresh": "15"
+    }
+}
