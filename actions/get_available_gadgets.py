@@ -1,9 +1,9 @@
 from lib.base import BaseJiraAction
 
-__all__ = ["GetGadgetsAction"]
+__all__ = ["GetAvailableGadgetsAction"]
 
 
-class GetGadgetsAction(BaseJiraAction):
+class GetAvailableGadgetsAction(BaseJiraAction):
     def run(self):
         gadgets = self._client.gadgets()
         return [gadget.raw for gadget in gadgets]
