@@ -1,10 +1,14 @@
 ---
-name: create_dashboard
+name: copy_dashboard
 runner_type: python-script
-description: Create a new JIRA dashboard.
+description: Copy an existing JIRA dashboard.
 enabled: true
-entry_point: create_dashboard.py
+entry_point: copy_dashboard.py
 parameters:
+  id:
+    type: string
+    description: The ID of the Dashboard to copy.
+    required: true
   name:
     type: string
     description: The name of the new dashboard.

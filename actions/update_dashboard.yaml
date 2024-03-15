@@ -22,8 +22,10 @@ parameters:
     items:
       type: object
     required: false
+    description: A list of permission objects to grant editing permissions.
   share_permissions:
     type: array
     items:
       type: object
     required: false
+    description: A list of permissions objects to grant sharing permissions.
