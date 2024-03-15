@@ -1,2 +1,2 @@
-jira @ git+https://github.com/jpavlav/jira.git@8e4fc5e0210bf3ef197c1a0ec4feae3d73d4b1fa
+jira @ git+https://github.com/jpavlav/jira.git@6b3a7cb45b84552dcf5988c32e7faab896d5a70b
 pyjwt==2.4.0
