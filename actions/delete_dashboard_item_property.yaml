@@ -1,0 +1,19 @@
+---
+name: delete_dashboard_item_property
+runner_type: python-script
+description: Delete the property of an item (gadget) on a dashboard.
+enabled: true
+entry_point: delete_dashboard_item_property.py
+parameters:
+  dashboard_id:
+    type: string
+    description: The ID of the Dashboard.
+    required: true
+  item_id:
+    type: string
+    description: The ID of the dashboard item (gadget).
+    required: true
+  property_key:
+    type: string
+    description: The item property key.
+    required: true
