@@ -1,0 +1,6 @@
+---
+name: get_gadgets
+runner_type: python-script
+description: Get a list of available gadgets.
+enabled: true
+entry_point: get_gadgets.py

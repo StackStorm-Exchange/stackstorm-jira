@@ -1,7 +1,7 @@
 ---
 name: remove_gadget
 runner_type: python-script
-description: Update a gadget on a dashboard.
+description: Remove a gadget from a dashboard.
 enabled: true
 entry_point: remove_gadget.py
 parameters:
