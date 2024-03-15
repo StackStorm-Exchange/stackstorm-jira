@@ -1,8 +1,26 @@
 # Change Log
 
+## 2.7.0
+
+- Add new ``jira.add_gadget`` action
+- Add new ``jira.copy_dashboard`` action
+- Add new ``jira.create_dashboard`` action
+- Add new ``jira.delete_dashboard_item_property`` action
+- Add new ``jira.delete_dashboard`` action
+- Add new ``jira.get_available_gadgets`` action
+- Add new ``jira.get_dashboard_gadgets`` action
+- Add new ``jira.get_dashboard_item_property_keys`` action
+- Add new ``jira.get_dashboard_item_property`` action
+- Add new ``jira.remove_gadget`` actionn
+- Add new ``jira.set_dashboard_item_property`` action
+- Add new ``jira.update_dashboard_automatic_refresh`` action
+- Add new ``jira.update_dashboard_item_property`` action
+- Add new ``jira.update_dashboard`` action
+- Add new ``jira.update_gadget`` action
+
 ## 2.6.0
 
-- Add new ``jira.get_issue_links`` action 
+- Add new ``jira.get_issue_links`` action
 
 - Evaluate if an issue has a priority set before attempting to get the priority
 
@@ -17,7 +35,7 @@
 ## 2.4.2
 
 - Update `formatters.py` to include `priority` field
-  
+
 ## 2.4.1
 
 - Update `search_issue` to include `include_components` and `include_subtasks` as flags

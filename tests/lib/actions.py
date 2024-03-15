@@ -1,3 +1,4 @@
+import json
 import yaml
 
 from st2tests.base import BaseActionTestCase
@@ -18,3 +19,6 @@ class JIRABaseActionTestCase(BaseActionTestCase):
 
     def load_yaml(self, filename):
         return yaml.safe_load(self.get_fixture_content(filename))
+
+    def load_json_fixture(self, filename):
+        return json.loads(self.get_fixture_content(filename))
