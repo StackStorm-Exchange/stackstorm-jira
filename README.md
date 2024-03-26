@@ -131,6 +131,21 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 * ``transition_issue`` - Do a transition on a JIRA issue / ticket.
 * ``transition_issue_by_name`` - Do a transition on a JIRA issue / ticket.
 * ``update_field_value`` - Update a field in a particular JIRA issue.
+* ``add_gadget`` - Add a gadget to an existing JIRA dashboard.
+* ``copy_dashboard`` - Copy an existing JIRA dashboard
+* ``create_dashboard`` - Create a JIRA dashboard
+* ``delete_dashboard_item_property`` - Delete a JIRA dashboard item property.
+* ``delete_dashboard`` - Delete a JIRA dashboard.
+* ``get_available_gadgets`` - Get all available JIRA dashboard gadgets.
+* ``get_dashboard_gadgets`` - Get all JIRA dashboard gadgets for an existing dashboard.
+* ``get_dashboard_item_property_keys`` - Get the dashboard item (gadget) property keys for an existing dashboard.
+* ``get_dashboard_item_property`` - Get a dashboard item (gadget) property from a gadget on JIRA dashboard.
+* ``remove_gadget`` - Remove a gadget from a JIRA dashboard.
+* ``set_dashboard_item_property`` - Set the value of a dashboard item (gadget) property on a JIRA dashboard.
+* ``update_dashboard_automatic_refresh`` - Set the refresh interval for JIRA dashboard in minutes.
+* ``update_dashboard_item_property`` - Update the value of a dashboard item (gadget) property on a JIRA dashboard.
+* ``update_dashboard`` - Update an existing JIRA dashboard.
+* ``update_gadget`` - Update an existing gadget on a JIRA dashboard.
 
 ## Maintainers
 Active pack maintainers with review & write repository access and expertise with JIRA:

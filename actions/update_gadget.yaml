@@ -1,0 +1,39 @@
+---
+name: update_gadget
+runner_type: python-script
+description: Update a gadget on a dashboard.
+enabled: true
+entry_point: update_gadget.py
+parameters:
+  dashboard_id:
+    type: string
+    description: The ID of the Dashboard to update the gadget on.
+    required: true
+  gadget_id:
+    type: string
+    description: The ID of the Gadget to update.
+    required: true
+  color:
+    type: string
+    description: The color of the gadget.
+    default: blue
+    enum:
+      - blue
+      - red
+      - yellow
+      - green
+      - cyan
+      - purple
+      - gray
+      - white
+    required: false
+  position:
+    type: object
+    description: |
+      A dictionary (object) containing positioning information for the
+      gadget like - {"column": 0, "row": 0}
+    required: false
+  title:
+    type: string
+    description: The title of the gadget.
+    required: false

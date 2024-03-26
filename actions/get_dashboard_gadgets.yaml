@@ -1,0 +1,11 @@
+---
+name: get_dashboard_gadgets
+runner_type: python-script
+description: Get all the gadgets on a dashboard.
+enabled: true
+entry_point: get_dashboard_gadgets.py
+parameters:
+  dashboard_id:
+    type: string
+    description: The ID of the Dashboard get gadgets from.
+    required: true

@@ -1,0 +1,10 @@
+{
+    "id": 15917,
+    "uri": "rest/gadgets/1.0/g/com.atlassian.jira.gadgets:filter-results-gadget/gadgets/filter-results-gadget.xml",
+    "color": "cyan",
+    "position": {
+        "row": 0,
+        "column": 1
+    },
+    "title": "Test Gadget"
+}

@@ -1,0 +1,15 @@
+---
+name: remove_gadget
+runner_type: python-script
+description: Remove a gadget from a dashboard.
+enabled: true
+entry_point: remove_gadget.py
+parameters:
+  dashboard_id:
+    type: string
+    description: The ID of the Dashboard to remove the gadget from.
+    required: true
+  gadget_id:
+    type: string
+    description: The ID of the Gadget to remove.
+    required: true

@@ -1,0 +1,31 @@
+---
+name: update_dashboard
+runner_type: python-script
+description: Update an existing JIRA dashboard.
+enabled: true
+entry_point: update_dashboard.py
+parameters:
+  dashboard_id:
+    type: string
+    description: The ID of the Dashboard to update.
+    required: true
+  name:
+    type: string
+    description: The name of the new dashboard.
+    required: true
+  description:
+    type: string
+    description: A description of the dashboard.
+    required: false
+  edit_permissions:
+    type: array
+    items:
+      type: object
+    required: false
+    description: A list of permission objects to grant editing permissions.
+  share_permissions:
+    type: array
+    items:
+      type: object
+    required: false
+    description: A list of permissions objects to grant sharing permissions.
