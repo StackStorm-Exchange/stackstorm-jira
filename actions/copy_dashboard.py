@@ -1,5 +1,5 @@
 from lib.base import BaseJiraAction
-from utils import remove_empty_attributes
+from lib.utils import remove_empty_attributes
 
 __all__ = ["CopyJiraDashboardAction"]
 
