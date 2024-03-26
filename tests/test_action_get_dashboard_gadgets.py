@@ -1,6 +1,6 @@
 import mock
 from get_dashboard_gadgets import GetDashboardGadgetsAction
-from jira.resources import Dashboard, Gadget
+from jira.resources import Dashboard, DashboardGadget
 
 from tests.lib.actions import JIRABaseActionTestCase
 
@@ -13,7 +13,7 @@ class GetDashboardGadgetsTest(JIRABaseActionTestCase):
     @mock.patch("requests.Session.request")
     def test_get_dashboard_gadgets(self, mocked_request, mocked_dashboard):
         dashboard = Dashboard({}, {}, raw=self.load_json_fixture("dashboard.json"))
-        gadget = Gadget({}, {}, raw=self.load_json_fixture("gadget.json"))
+        gadget = DashboardGadget({}, {}, raw=self.load_json_fixture("gadget.json"))
 
         dashboard.gadgets.append(gadget)
         mocked_dashboard.return_value = dashboard.gadgets

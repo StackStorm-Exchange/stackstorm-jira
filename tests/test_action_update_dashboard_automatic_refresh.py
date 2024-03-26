@@ -9,7 +9,7 @@ class UpdateJiraDashboardAutomaticRefreshActionDashboardTests(JIRABaseActionTest
     action_cls = UpdateJiraDashboardAutomaticRefreshAction
 
     @mock.patch("requests.Session.request")
-    @mock.patch("lib.base.JIRA.update_dashboard_automatic_refresh_seconds")
+    @mock.patch("lib.base.JIRA.update_dashboard_automatic_refresh_minutes")
     def test_update_dashboard_automatic_refresh(
         self, mock_automatic_refresh, mock_request
     ):
