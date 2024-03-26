@@ -1,5 +1,5 @@
 from lib.base import BaseJiraAction
-from lib.utils import remove_empty_attributes
+from utils import remove_empty_attributes
 
 __all__ = ["AddGadgetAction"]
 

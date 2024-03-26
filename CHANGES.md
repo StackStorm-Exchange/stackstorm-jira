@@ -1,7 +1,8 @@
 # Change Log
 
-## 2.7.0
+## 3.0.0
 
+- Drop support for `python 3.6`
 - Add new ``jira.add_gadget`` action
 - Add new ``jira.copy_dashboard`` action
 - Add new ``jira.create_dashboard`` action
