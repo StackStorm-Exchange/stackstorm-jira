@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.1
+
+- Fixed bug with `update_dashboard` action sending the wrong payload.
+
 ## 3.0.0
 
 - Drop support for `python 3.6`
