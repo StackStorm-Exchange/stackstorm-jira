@@ -17,8 +17,8 @@ class UpdateJiraDashboardAction(BaseJiraAction):
             {
                 "name": name,
                 "description": description,
-                "edit_permissions": edit_permissions,
-                "share_permissions": share_permissions,
+                "editPermissions": edit_permissions,
+                "sharePermissions": share_permissions,
             }
         )
 
