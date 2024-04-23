@@ -28,7 +28,4 @@ class GetJiraIssueAction(BaseJiraAction):
             else:
                 return data
 
-        if sanitize_formatting:
-            return strip_braces(result)
-        else:
-            return result
+        return strip_braces(result) if sanitize_formatting else result

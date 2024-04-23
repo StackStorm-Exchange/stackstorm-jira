@@ -41,6 +41,6 @@ parameters:
     default: false
   sanitize_formatting:
     type: boolean
-    description: True to remove jinja template artifacts.
+    description: When set to true removes jinja template artifacts.
     required: true
     default: false

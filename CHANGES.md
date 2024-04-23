@@ -1,7 +1,7 @@
 # Change Log
 
-## 3.0.2
-- Add new feature to get_issue to allow for stripping of Jinja templating artifacts.
+## 3.1.0
+- Add new feature to ``jira.get_issue`` to allow for stripping of Jinja templating artifacts from resulting output. (Removes instances of {{ }} from results.).
 
 ## 3.0.1
 
