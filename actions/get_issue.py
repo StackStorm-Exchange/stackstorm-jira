@@ -28,7 +28,6 @@ class GetJiraIssueAction(BaseJiraAction):
             else:
                 return data
 
-        cleaned_issue_dict = strip_braces(issue_dict)
         if sanitize_formatting:
             return strip_braces(result)
         else:
