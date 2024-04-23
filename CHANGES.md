@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.0.2
+- Add new feature to get_issue to allow for stripping of Jinja templating artifacts.
+
 ## 3.0.1
 
 - Fixed bug with `update_dashboard` action sending the wrong payload.
