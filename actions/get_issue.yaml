@@ -39,3 +39,8 @@ parameters:
     description: True to include linked issues.
     required: true
     default: false
+  sanitize_formatting:
+    type: boolean
+    description: True to remove jinja template artifacts.
+    required: true
+    default: false
