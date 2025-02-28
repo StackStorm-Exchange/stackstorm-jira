@@ -1,11 +1,11 @@
 # Change Log
 
-## 3.1.0
+## 3.2.0
 - Add new feature to ``jira.get_issue`` to allow for stripping of Jinja templating artifacts from resulting output. (Removes instances of {{ }} from results.)
 
-  Example: You pull a jira with ``code`` block in a comment or the description. To the API that shows up as {{ code }} which is jinja Templating and will cause 
+  Example: You pull a jira with ``code`` block in a comment or the description. To the API that shows up as {{ code }} which is jinja Templating and will cause
   issues when trying to use that output anywhere else in a workflow as it cannot find the `code` variable in the context.
-  
+
 
 ## 3.0.1
 
