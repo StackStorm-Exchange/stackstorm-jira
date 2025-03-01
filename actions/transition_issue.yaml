@@ -13,3 +13,9 @@ parameters:
     type: string
     description: ID of transition (e.g. 11, 21, etc).
     required: true
+  fields:
+    type: object
+    description: >-
+      Fields to update on the issue. For example to set resolution to "Fixed"
+      {"resolution": {"name": "Fixed"}}.
+    required: false
