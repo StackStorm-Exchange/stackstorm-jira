@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.2.1
+- Fixed the deafult attribute invocation for jira field ``description`` to verify that the attribute exists first. If ``description`` attribute does not exist then return ``null``.
+
 ## 3.2.0
 - Add new feature to ``jira.get_issue`` to allow for stripping of Jinja templating artifacts from resulting output. (Removes instances of {{ }} from results.)
 
