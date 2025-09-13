@@ -3,11 +3,12 @@ from __future__ import annotations
 
 import json
 import warnings
-from typing import Any, Generic, Iterable, overload
+from typing import Any, Generic, Iterable, overload, Iterator, SupportsIndex
 
 from jira import JIRA
 from jira.client import ResourceType, cloud_api
 from jira.resources import Issue
+from jira.exceptions import JIRAError
 
 JIRA_BASE_URL = JIRA.JIRA_BASE_URL
 
