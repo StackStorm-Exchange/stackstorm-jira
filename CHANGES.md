@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.2.2
+- Addresses [#87](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/87) search failure due to [deprecation of /v2/search endpoint](https://developer.atlassian.com/changelog/#CHANGE-2046)
+
 ## 3.2.1
 - Fixed the deafult attribute invocation for jira field ``description`` to verify that the attribute exists first. If ``description`` attribute does not exist then return ``null``.
 
