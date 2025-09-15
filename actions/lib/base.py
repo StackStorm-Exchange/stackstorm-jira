@@ -1,4 +1,4 @@
-from jira import JIRA
+from patched_search import JIRA
 import base64
 
 #  from st2common.runners.base_action import Action
