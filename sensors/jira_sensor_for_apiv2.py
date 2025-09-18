@@ -2,7 +2,7 @@
 import os
 import base64
 
-from jira.client import JIRA
+from patched_search import JIRA
 
 from st2reactor.sensor.base import PollingSensor
 
