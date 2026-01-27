@@ -3,6 +3,9 @@
 ## 3.2.3
 - Addresses [#87](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/87) JIRA sensor failure due to [deprecation of /v2/search endpoint](https://developer.atlassian.com/changelog/#CHANGE-2046)
 
+# 3.3.0
+- Added new ``search_users`` action
+
 ## 3.2.2
 - Addresses [#87](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/87) search failure due to [deprecation of /v2/search endpoint](https://developer.atlassian.com/changelog/#CHANGE-2046)
 
