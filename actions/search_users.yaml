@@ -22,10 +22,10 @@ parameters:
   include_active:
     type: boolean
     description: True to include active users.
-    required: true
+    required: false
     default: true
   include_inactive:
     type: boolean
     description: True to include inactive users.
-    required: true
+    required: false
     default: false
