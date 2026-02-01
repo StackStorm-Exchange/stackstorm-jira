@@ -1,5 +1,8 @@
 # Change Log
 
+# 3.3.0
+- Added new ``search_users`` action. Addresses [#90](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/90)
+
 ## 3.2.3
 - Addresses [#87](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/87) JIRA sensor failure due to [deprecation of /v2/search endpoint](https://developer.atlassian.com/changelog/#CHANGE-2046)
 
