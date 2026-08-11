@@ -28,6 +28,9 @@ def to_issue_dict(issue, include_comments=False, include_attachments=False,
     else:
         assignee = None
 
+    issue_type = getattr(issue.fields, 'issuetype', None)
+    status_category = getattr(issue.fields.status, 'statusCategory', None)
+
     result = {
         'id': issue.id,
         'key': issue.key,
@@ -35,6 +38,8 @@ def to_issue_dict(issue, include_comments=False, include_attachments=False,
         'summary': issue.fields.summary,
         'description': issue.fields.description if hasattr(issue.fields, 'description') else None,
         'status': issue.fields.status.name,
+        'issue_type': issue_type.name if issue_type else None,
+        'status_category': status_category.name if status_category else None,
         'priority': issue.fields.priority.name if hasattr(issue.fields, 'priority') else None,
         'resolution': resolution,
         'labels': issue.fields.labels if hasattr(issue.fields, 'labels') else [],
@@ -129,15 +134,20 @@ def to_links_dict(issue):
     """
     :rtype: ``dict``
     """
+    outward_issue = issue.raw.get('outwardIssue')
+    linked_issue = outward_issue or issue.raw.get('inwardIssue') or {}
+    fields = linked_issue.get('fields') or {}
+    status = fields.get('status') or {}
+    issue_type = fields.get('issuetype') or {}
+    link_type = issue.raw.get('type') or {}
+
     result = {
         'id': issue.raw.get('id'),
-        'key': issue.raw.get('outwardIssue', issue.raw.get('inwardIssue')).get('key'),
-        'summary': issue.raw.get('outwardIssue', issue.raw.get('inwardIssue'))
-        .get('fields').get('summary'),
-        'status': issue.raw.get('outwardIssue', issue.raw.get('inwardIssue')).get('fields')
-        .get('status').get('name'),
-        'type': issue.raw.get('type').get('outward') if issue.raw.get('outwardIssue')
-        else issue.raw.get('type').get('inward'),
+        'key': linked_issue.get('key'),
+        'summary': fields.get('summary'),
+        'status': status.get('name'),
+        'type': link_type.get('outward') if outward_issue else link_type.get('inward'),
+        'issue_type': issue_type.get('name'),
     }
     return result
 
