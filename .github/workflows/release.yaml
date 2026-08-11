@@ -13,14 +13,15 @@ jobs:
   # This mirrors build_and_test workflow
   build_and_test:
     name: 'Build and Test'
-    uses: StackStorm-Exchange/ci/.github/workflows/pack-build_and_test.yaml@master
+    uses: StackStorm-Exchange/ci/.github/workflows/pack-build_and_test.yaml@59a61ac0b69c6bf9ea57715f566198de49fe4443 # master
     with:
       enable-common-libs: true
       #apt-cache-version: v0
       #py-cache-version: v0
-      python-version: '["3.8", "3.9"]'
+      python-version: '["3.10", "3.11"]'
+      st2-branch: 15e45d07d1b3a2b5330ef07a47dc258e2d56ded0 # v3.9.0
 
   tag_release:
     needs: build_and_test
     name: Tag Release
-    uses: StackStorm-Exchange/ci/.github/workflows/pack-tag_release.yaml@master
+    uses: StackStorm-Exchange/ci/.github/workflows/pack-tag_release.yaml@59a61ac0b69c6bf9ea57715f566198de49fe4443 # master
