@@ -1,5 +1,9 @@
 # Change Log
 
+# 3.4.0
+- Add issue type and status category metadata to issue output, and issue type metadata to
+  linked issue output.
+
 # 3.3.0
 - Added new ``search_users`` action. Addresses [#90](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/90)
 
