@@ -1,5 +1,8 @@
 # Change Log
 
+# 3.3.1
+- Pin CI to a stable StackStorm release and supported Python versions.
+
 # 3.3.0
 - Added new ``search_users`` action. Addresses [#90](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/90)
 
